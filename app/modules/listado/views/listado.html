@@ -1,0 +1,110 @@
+<!-- BEGIN PAGE HEADER-->
+<h3 class="page-title"> Listado
+</h3>
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="#/app/dashboard.html">Incio</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a href="#/app/listado">Listado</a>
+        </li>
+    </ul>
+</div>
+<!-- END PAGE HEADER-->
+<!-- BEGIN MAIN CONTENT -->
+<div class="row" nv-file-drop="" uploader="uploader" filters="queueLimit, customFilter">
+    <div class="col-md-12">
+        <!-- BEGIN: ACCORDION DEMO -->
+        <div class="portlet light">
+            <div class="portlet-title">
+                <div class="caption font-green-sharp">
+                    <i class="icon-layers font-green-sharp"></i>
+                    <span class="caption-subject bold uppercase">Proyectos</span>
+                    <span class="caption-helper hide"></span>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div ng-show="uploader.isHTML5">
+                    <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_2">
+                        <thead>
+                            <tr class="text-center">
+                                <th> Nombre del Proyecto </th>
+                                <th> Materia </th>
+                                <th> Ver </th>
+                                <th> Editar </th>
+                                <th> Borrar </th>
+                                <th> Aceptar </th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center">
+                            <tr class="odd gradeX">
+                                <td> Osos </td>
+                                <td> IHC </td>
+                                <td>
+                                    <a><button class="btn btn-info"><i class="fa fa-eye"></i></button></a>
+                                </td>
+                                <td>
+                                    <a><button class="btn btn-info"><i class="icon-pencil"></i></button></a>
+                                </td>
+                                <td> <a><button class="btn btn-danger" ng-click="borrarProyecto"><i class="icon-trash"></i></button></a> </td>
+                                <td>
+                                    <a><button class="btn btn-success"><i class="icon-check"></i></button></a>
+                                    <a><button class="btn btn-danger"><i class="icon-close"></i></button></a>
+                                </td>
+                            </tr>
+                            <tr class="odd gradeX">
+                                <td> Osos </td>
+                                <td> IHC </td>
+                                <td>
+                                    <a><button class="btn btn-info"><i class="fa fa-eye"></i></button></a>
+                                </td>
+                                <td>
+                                    <a><button class="btn btn-info" ng-click="actualizarProyecto"><i class="icon-pencil"></i></button></a>
+                                </td>
+                                <td> <a><button class="btn btn-danger" ng-click="borrarProyecto"><i class="icon-trash"></i></button></a> </td>
+                                <td>
+                                    <a><button class="btn btn-success"><i class="icon-check"></i></button></a>
+                                    <a><button class="btn btn-danger"><i class="icon-close"></i></button></a>
+                                </td>
+                            </tr>
+                            <tr class="odd gradeX">
+                                <td> Osos </td>
+                                <td> IHC </td>
+                                <td>
+                                    <a><button class="btn btn-info"><i class="fa fa-eye"></i></button></a>
+                                </td>
+                                <td>
+                                    <a><button class="btn btn-info" ng-click="actualizarProyecto"><i class="icon-pencil"></i></button></a>
+                                </td>
+                                <td> <a><button class="btn btn-danger" ng-click="borrarProyecto"><i class="icon-trash"></i></button></a> </td>
+                                <td>
+                                    <a><button class="btn btn-success"><i class="icon-check"></i></button></a>
+                                    <a><button class="btn btn-danger"><i class="icon-close"></i></button></a>
+                                </td>
+                            </tr>
+                            <tr class="odd gradeX">
+                                <td> Osos </td>
+                                <td> IHC </td>
+                                <td>
+                                    <a><button class="btn btn-info"><i class="fa fa-eye"></i></button></a>
+                                </td>
+                                <td>
+                                    <a><button class="btn btn-info" ng-click="actualizarProyecto"><i class="icon-pencil"></i></button></a>
+                                </td>
+                                <td> <a><button class="btn btn-danger" ng-click="borrarProyecto"><i class="icon-trash"></i></button></a> </td>
+                                <td>
+                                    <a><button class="btn btn-success"><i class="icon-check"></i></button></a>
+                                    <a><button class="btn btn-danger"><i class="icon-close"></i></button></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>    
+                </div>
+        <!-- END: ACCORDION DEMO -->
+    </div>
+</div>
+<!-- END MAIN CONTENT -->
+<!-- BEGIN MAIN JS-->

@@ -98,13 +98,6 @@ gulp.task('minify-own-styles', function(){
 
 gulp.task('minify-own-sources', function() {
   gulp.src(['app/modules/*.module.js' ,'app/modules/**/*.js','app/js/*.js', 'app/js/controllers/*.js', 'app/directives/**/*.js'])
-    .pipe(
-      gulpif(/[.]coffee$/, coffee({bare: true}).on('error', gutil.log)
-    ))
-    /* Uncomment if you need make a template
-    .pipe(
-      gulpif(/app.js$/, template({baseUrl: enviroment.baseUrl })
-    ))*/
     .pipe(ngAnnotate())
     .pipe(concat('app.min.js'))
     .pipe(gulp.dest("build/assets/js/"))

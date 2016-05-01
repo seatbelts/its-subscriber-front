@@ -8,7 +8,11 @@ var MetronicApp = angular.module("MetronicApp", [
     "ui.bootstrap", 
     "oc.lazyLoad",  
     "ngSanitize",
-    "templates"
+    "templates",
+    "its.auth",
+    "its.listado",
+    "its.proyectos",
+    "its.usuarios"
 ]); 
 
 /* Configure ocLazyLoader(refer: https://github.com/ocombe/ocLazyLoad) */
@@ -111,10 +115,14 @@ MetronicApp.controller('HeaderController', ['$scope', function($scope) {
 }]);
 
 /* Setup Layout Part - Sidebar */
-MetronicApp.controller('SidebarController', ['$scope', function($scope) {
+MetronicApp.controller('SidebarController', ['$scope', '$state', function($scope, $state) {
     $scope.$on('$includeContentLoaded', function() {
         Layout.initSidebar(); // init sidebar
     });
+
+    $scope.gotoListado = function() {
+        $state.go('app.listado');
+    };
 
 }]);
 
@@ -144,148 +152,38 @@ MetronicApp.controller('FooterController', ['$scope', function($scope) {
 /* Setup Rounting For All Pages */
 MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
     // Redirect any unmatched url
-    $urlRouterProvider.otherwise("/dashboard");  
+    $urlRouterProvider.otherwise("app/dashboard");  
     
     $stateProvider
 
-
-
-        // Login Ya me la sandwich compi
-        /*.state('login', {
-            url: "/login",
-            templateUrl: "views/login.html",
-            controller: "LoginController",
-            resolve: {
-                deps: ['$ocLazyLoad', function($ocLazyLoad) {
-                    return $ocLazyLoad.load({
-                        name: 'Login',
-                        files: [
-                            '../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css',                            
-                            '../assets/global/plugins/select2/css/select2.min.css',
-                            '../assets/global/plugins/select2/css/select2-bootstrap.min.css',
-                            '../assets/global/css/components.min.css',
-                            '../assets/global/css/plugins.min.css',
-                            '../assets/pages/css/login-4.min.css',
-
-                            '../assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js',
-                            '../assets/global/plugins/jquery-validation/js/jquery.validate.min.js',
-                            '../assets/global/plugins/jquery-validation/js/additional-methods.min.js',
-                            '../assets/global/plugins/select2/js/select2.full.min.js',
-                            '../assets/global/plugins/backstretch/jquery.backstretch.min.js',
-                            '../assets/global/scripts/app.min.js',
-                            '../assets/pages/scripts/login-4.min.js',
-                            
-                            'js/controllers/LoginController.js'
-                        ] 
-                    });
-                }]
+        .state('app', {
+            url: '/app',
+            abstract: true,
+            views: {
+                'mainView': {
+                    templateUrl: 'views/app.html',
+                    controller: 'AppController' 
+                }
+            },
+            data: {
+                requireLogin: true
             }
-        })*/
-        // Tree View
-        .state('login', {
-            url: "/login",
-            templateUrl: "views/tree.html",
-            data: {pageTitle: 'jQuery Tree View'},
-            controller: "LoginController"
-            /*resolve: {
-                deps: ['$ocLazyLoad', function($ocLazyLoad) {
-                    return $ocLazyLoad.load([{
-                        name: 'MetronicApp',
-                        insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
-                        files: [
-                            '../assets/global/plugins/jstree/dist/themes/default/style.min.css',
-
-                            'js/controllers/LoginController.js'
-                        ] 
-                    }]);
-                }] 
-            }*/
         })
 
         // Dashboard
-        .state('dashboard', {
+        .state('app.dashboard', {
             url: "/dashboard",
-            templateUrl: "views/dashboard.html",            
-            data: {pageTitle: 'Inicio'},
-            controller: "DashboardController"   
-            /*resolve: {
-                deps: ['$ocLazyLoad', function($ocLazyLoad) {
-                    return $ocLazyLoad.load({
-                        name: 'MetronicApp',
-                        insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
-                        files: [
-                            '/build/assets/js/scripts/morris.css',                            
-                            '/build/assets/js/scripts/morris.min.js',
-                            '/build/assets/js/scripts/raphael-min.js',                            
-                            '/build/assets/js/scripts/jquery.sparkline.min.js',
-
-                            '/build/assets/js/scripts/dashboard.min.js',
-                            //'js/controllers/DashboardController.js',
-                        ] 
-                    });
-                }]
-            }*/
-        })
-
-        // AngularJS plugins
-        .state('listado', {
-            url: "/listado",
-            templateUrl: "views/listado.html",
-            data: {pageTitle: 'Listado de Proyectos'},
-            controller: "ListadoController"
-            /*resolve: {
-                deps: ['$ocLazyLoad', function($ocLazyLoad) {
-                    return $ocLazyLoad.load([{
-                        name: 'angularFileUpload',
-                        files: [
-                            '../assets/global/plugins/angularjs/plugins/angular-file-upload/angular-file-upload.min.js',
-                        ] 
-                    }, {
-                        name: 'MetronicApp',
-                        files: [
-                            'js/controllers/ListadoController.js'
-                        ]
-                    }]);
-                }]
-            }*/
-        })
-
-        // Form Tools
-        .state('inscribir', {
-            url: "/inscribir",
-            templateUrl: "views/inscribir.html",
-            data: {pageTitle: 'Inscribir Proyecto'},
-            controller: "InscribirController"
-           /* resolve: {
-                deps: ['$ocLazyLoad', function($ocLazyLoad) {
-                    return $ocLazyLoad.load([{
-                        name: 'MetronicApp',
-                        insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
-                        files: [
-                            '../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css',
-                            '../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css',
-                            '../assets/global/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css',
-                            '../assets/global/plugins/typeahead/typeahead.css',
-
-                            '../assets/global/plugins/fuelux/js/spinner.min.js',
-                            '../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js',
-                            '../assets/global/plugins/bootstrap-pwstrength/pwstrength-bootstrap.min.js',
-                            '../assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js',
-                            '../assets/global/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js',
-                            '../assets/global/plugins/bootstrap-touchspin/bootstrap.touchspin.js',
-                            '../assets/global/plugins/typeahead/handlebars.min.js',
-                            '../assets/global/plugins/typeahead/typeahead.bundle.min.js',
-                            '../assets/pages/scripts/components-form-tools-2.min.js',
-
-                            'js/controllers/InscribirController.js'
-                        ] 
-                    }]);
-                }] 
-            }*/
-        })        
+            title: 'Incio',
+            views: {
+                'contentView': {
+                    templateUrl: 'views/dashboard.html',
+                    controller: "DashboardController"
+                }
+            }
+        })      
 
         // User Profile
-        .state("profile", {
+        /*.state("profile", {
             url: "/profile",
             templateUrl: "views/profile/main.html",
             data: {pageTitle: 'User Profile'},
@@ -306,7 +204,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
                         ]                    
                     });
                 }]
-            }*/
+            }
         })
 
         // User Profile Dashboard
@@ -321,41 +219,26 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
             url: "/account",
             templateUrl: "views/profile/account.html",
             data: {pageTitle: 'User Account'}
-        })
-
-        // Todo
-        .state('proyectos', {
-            url: "/proyectos",
-            templateUrl: "views/proyectos.html",
-            data: {pageTitle: 'Proyectos'},
-            controller: "ProyectosController",
-            /*resolve: {
-                deps: ['$ocLazyLoad', function($ocLazyLoad) {
-                    return $ocLazyLoad.load({ 
-                        name: 'MetronicApp',  
-                        insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
-                        files: [
-                            '../assets/apps/css/todo-2.css',
-                            '../assets/global/plugins/select2/css/select2.min.css',
-                            '../assets/global/plugins/select2/css/select2-bootstrap.min.css',
-
-                            '../assets/global/plugins/select2/js/select2.full.min.js',
-
-                            '../assets/apps/scripts/todo-2.min.js',
-
-                            'js/controllers/ProyectosController.js'  
-                        ]                    
-                    });
-                }]
-            }*/
-        })
+        })*/
 
 }]);
 
 /* Init global settings and run the app */
-MetronicApp.run(["$rootScope", "settings", "$state", function($rootScope, settings, $state) {
+MetronicApp.run(["$rootScope", "$stateParams", "$templateCache","settings", "$state", function($rootScope, $stateParams, $templateCache, settings, $state) {
     $rootScope.$state = $state; // state to be accessed from view
     $rootScope.$settings = settings; // state to be accessed from view
+
+    /*$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+    var stateData;
+       console.log($rootScope.$state);
+       stateData = toState.data;
+       console.log(stateData);
+       if (stateData.requireLogin) {
+            return $state.go('login');
+       }
+    });*/
+
+    $rootScope.baseUrl = 'http://itsubscriber.herokuapp.com:80'; 
 }]);
 
 var myApp = angular.module('its', ["MetronicApp"]);

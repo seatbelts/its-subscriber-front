@@ -1,5 +1,5 @@
 [
-	"bower_components/jquery/dist/jquery.min.js",
+	"bower_components/jquery/jquery.min.js",
 	"bower_components/bootstrap/dist/js/bootstrap.min.js",
 	"bower_components/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js",
 	"bower_components/slimScroll/jquery.slimscroll.min.js",
@@ -11,5 +11,9 @@
 	"bower_components/angular-touch/angular-touch.min.js",
 	"bower_components/angular-ui-router/release/angular-ui-router.min.js",
 	"bower_components/oclazyload/dist/ocLazyLoad.min.js",
-	"app/assets/scripts/ui-bootstrap-tpls.min.js"
+	"app/assets/scripts/ui-bootstrap-tpls.min.js",
+	"bower_components/jquery-validation/dist/jquery.validate.min.js",
+	"bower_components/jquery-validation/dist/additional-methods.min.js",
+	"bower_components/select2/dist/js/select2.full.min.js",
+	"bower_components/jquery-backstretch/jquery.backstretch.min.js"
 ]

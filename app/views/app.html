@@ -1,0 +1,21 @@
+<div data-ng-include="'views/partials/header.html'" ng-controller="HeaderController" class="page-header navbar navbar-fixed-top"> </div>
+
+<div class="clearfix"> </div>
+
+<div class="container">
+    <div class="page-container">
+        
+        <div data-ng-include="'views/partials/sidebar.html'" ng-controller="SidebarController" class="page-sidebar-wrapper"> </div>
+        
+        <div class="page-content-wrapper">
+            <div class="page-content">
+                
+                <div ui-view="contentView"> </div>
+                
+            </div>
+        </div>
+    </div>
+    
+    <div data-ng-include="'views/partials/footer.html'" ng-controller="FooterController" class="page-footer"> </div>
+    
+</div>
