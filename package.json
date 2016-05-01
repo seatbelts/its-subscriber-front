@@ -1,0 +1,36 @@
+{
+  "name": "its",
+  "version": "0.0.0",
+  "description": "its",
+  "author": "",
+  "dependencies": {
+    "gulp-uglify": "^1.5.3"
+  },
+  "devDependencies": {
+    "lazypipe": "latest",
+    "main-bower-files": "latest",
+    "gulp": "latest",
+    "gulp-angular-templatecache": "latest",
+    "gulp-coffee": "latest",
+    "gulp-compass": "latest",
+    "gulp-concat": "latest",
+    "gulp-concat-css": "latest",
+    "gulp-connect": "latest",
+    "gulp-css-flip": "latest",
+    "gulp-if": "latest",
+    "gulp-ignore": "latest",
+    "gulp-jade": "latest",
+    "gulp-less": "latest",
+    "gulp-ng-annotate": "latest",
+    "gulp-sass": "latest",
+    "gulp-template": "latest",
+    "gulp-uglify": "latest",
+    "gulp-util": "latest",
+    "through2": "latest"
+  },
+  "scripts": {
+    "prestart": "bower install",
+    "start": "npm install",
+    "poststart": "gulp"
+  }
+}

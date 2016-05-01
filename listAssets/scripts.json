@@ -1,0 +1,6 @@
+[
+	"app/assets/scripts/app.min.js",
+	"app/assets/scripts/layout.min.js",
+	"app/assets/scripts/quick-sidebar.min.js",
+	"app/assets/scripts/demo.min.js"
+]
