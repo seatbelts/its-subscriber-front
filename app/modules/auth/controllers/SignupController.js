@@ -1,6 +1,6 @@
 (function() {
-	var LoginController;
-	LoginController = function($scope, $state, $rootScope, AuthService) {
+	var SignupController;
+	SignupController = function($scope, $state, $rootScope) {
 
 		console.log('ayyy');
 
@@ -9,7 +9,7 @@
 			password: ''
 		};
 
-		$scope.login = function() {
+		$scope.signup = function() {
 			console.log('yes');
 		}
 
@@ -22,5 +22,5 @@
 					});
 		};*/
 	};
-	return angular.module('its.auth').controller('LoginController', LoginController);
+	return angular.module('its.auth').controller('SignupController', SignupController);
 })();

@@ -164,9 +164,6 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
                     templateUrl: 'views/app.html',
                     controller: 'AppController' 
                 }
-            },
-            data: {
-                requireLogin: true
             }
         })
 
@@ -179,47 +176,11 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
                     templateUrl: 'views/dashboard.html',
                     controller: "DashboardController"
                 }
+            },
+            data: {
+                requireLogin: true
             }
         })      
-
-        // User Profile
-        /*.state("profile", {
-            url: "/profile",
-            templateUrl: "views/profile/main.html",
-            data: {pageTitle: 'User Profile'},
-            controller: "UserProfileController",
-           /* resolve: {
-                deps: ['$ocLazyLoad', function($ocLazyLoad) {
-                    return $ocLazyLoad.load({
-                        name: 'MetronicApp',  
-                        insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
-                        files: [
-                            '../assets/pages/css/profile.css',
-                            
-                            '../assets/global/plugins/jquery.sparkline.min.js',
-
-                            '../assets/pages/scripts/profile.min.js',
-
-                            'js/controllers/UserProfileController.js'
-                        ]                    
-                    });
-                }]
-            }
-        })
-
-        // User Profile Dashboard
-        .state("profile.dashboard", {
-            url: "/dashboard",
-            templateUrl: "views/profile/dashboard.html",
-            data: {pageTitle: 'User Profile'}
-        })
-
-        // User Profile Account
-        .state("profile.account", {
-            url: "/account",
-            templateUrl: "views/profile/account.html",
-            data: {pageTitle: 'User Account'}
-        })*/
 
 }]);
 
@@ -228,15 +189,15 @@ MetronicApp.run(["$rootScope", "$stateParams", "$templateCache","settings", "$st
     $rootScope.$state = $state; // state to be accessed from view
     $rootScope.$settings = settings; // state to be accessed from view
 
-    /*$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
-    var stateData;
-       console.log($rootScope.$state);
-       stateData = toState.data;
-       console.log(stateData);
+    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+       var stateData;
+        $rootScope.prevState = toState;
+        $rootScope.prevState.params = toParams;
+        stateData = toState.data;
        if (stateData.requireLogin) {
-            return $state.go('login');
+            $state.go('login');
        }
-    });*/
+    });
 
     $rootScope.baseUrl = 'http://itsubscriber.herokuapp.com:80'; 
 }]);

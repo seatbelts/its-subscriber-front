@@ -1,0 +1,34 @@
+<div autoscroll="false" class="ng-zoomBackDown ng-fluid ng-scope">
+  <div class="block-center mt-xl wd-xl ng-scope">
+    <div class="panel panel-dark panel-flat">
+      <div class="panel-heading text-center">
+        <img src="assets/img/logo.png" alt="App Logo" class="img-responsive mycenter"/>
+      </div>
+      <div class="panel-body">
+        <p class="text-center pv">Crear Cuenta</p>
+        <form role="form" class="mb-lg" ng-submit="signup()">
+          <div class="form-group has-feedback">
+            <input placeholder="Nombre" ng-model="model.first_name" required="required" class="form-control"/><span class="fa fa-user form-control-feedback text-muted"></span>
+          </div>
+          <div class="form-group has-feedback">
+            <input placeholder="Apellidos" ng-model="model.last_name" required="required" class="form-control"/><span class="fa fa-user form-control-feedback text-muted"></span>
+          </div>	
+          <div class="form-group has-feedback">
+            <input placeholder="Usuario" ng-model="model.username" required="required" class="form-control"/><span class="fa fa-user form-control-feedback text-muted"></span>
+          </div>
+          <div class="form-group has-feedback">
+            <input placeholder="Email" ng-model="model.email" required="required" class="form-control"/><span class="fa fa-envelope form-control-feedback text-muted"></span>
+          </div>
+          <div class="form-group has-feedback">
+            <input placeholder="Contraseña" ng-model="model.password" type="password" required="required" class="form-control"/><span class="fa fa-lock form-control-feedback text-muted"></span>
+          </div>
+          <div class="form-group has-feedback">
+            <input placeholder="Repite tu Contraseña" ng-model="model.password" type="password" required="required" class="form-control"/><span class="fa fa-lock form-control-feedback text-muted"></span>
+          </div>
+          <button type="submit" class="btn btn-block btn-primary">Crear Cuenta</button>
+        </form>
+        <div class="text-center"><h3>Ya tienes cuenta? <a href="#/login">Ingresa Aqui</a></h3></div>
+      </div>
+    </div>
+  </div>
+</div>

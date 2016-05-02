@@ -9,6 +9,15 @@
 					controller: 'LoginController'
 				}
 			}
+		})
+		.state('signup', {
+			url: '/signup',
+			views: {
+				'mainView': {
+					templateUrl: 'modules/auth/views/signup.html',
+					controller: 'SignupController'
+				}
+			}
 		});
 	};
 	return angular.module('its.auth').config(AuthRoutes);

@@ -19,6 +19,8 @@ var bowerjsFiles = require("./listAssets/bowerjs.json");
 var cssFiles = require("./listAssets/css.json");
 var jsFiles = require("./listAssets/scripts.json");
 
+var logincssFiles = require('./listAssets/logincss.json');
+
 var enviroments = {
   "development" : {
   },
@@ -75,7 +77,7 @@ gulp.task('minify-js', function() {
         .pipe(concat('scripts.min.js'))
         .pipe(uglify())
         .pipe(gulp.dest('build/assets/js'))
-  })
+});
 
 gulp.task('minify-js-dependencies', function() {
   return gulp.src(bowerjsFiles)
@@ -93,6 +95,12 @@ gulp.task('copyImages',function(){
 gulp.task('minify-own-styles', function(){
   return gulp.src(cssFiles)
       .pipe(concatCss('app.css'))
+      .pipe(gulp.dest('build/assets/css'))
+});
+
+gulp.task('minify-login-styles', function(){
+  return gulp.src(logincssFiles)
+      .pipe(concatCss('login.min.css'))
       .pipe(gulp.dest('build/assets/css'))
 });
 
@@ -117,5 +125,5 @@ gulp.task('watch', function () {
   gulp.watch(['app/index.html'], ['index']);
 });
 
-gulp.task('default', ['connect', 'copyfonts', 'copyImages', 'minify-js-dependencies', 'templates', 'minify-css', 'minify-own-styles', 'minify-own-sources', 'minify-js', 'index' ,'watch']);
+gulp.task('default', ['connect', 'copyfonts', 'copyImages', 'minify-js-dependencies', 'templates', 'minify-css', 'minify-own-styles', 'minify-login-styles', 'minify-own-sources', 'minify-js', 'index' ,'watch']);
 gulp.task('production', ['copyfonts', 'copyImages', 'bowerify', 'templates', 'minify-own-styles', 'minify-own-sources', 'index']);
