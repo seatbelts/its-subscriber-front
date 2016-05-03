@@ -7,7 +7,7 @@
   "keywords": [],
   "dependencies": {
     "jquery": "latest",
-    "angular": "latest",
+    "angular": "1.4.9",
     "angular-route": "latest",
     "angular-loading-bar": "latest",
     "angular-ui-router": "latest",

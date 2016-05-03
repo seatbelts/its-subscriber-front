@@ -176,10 +176,10 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
                     templateUrl: 'views/dashboard.html',
                     controller: "DashboardController"
                 }
-            },
-            data: {
-                requireLogin: true
             }
+            // data: {
+            //     requireLogin: true
+            // }
         })      
 
 }]);
@@ -190,13 +190,13 @@ MetronicApp.run(["$rootScope", "$stateParams", "$templateCache","settings", "$st
     $rootScope.$settings = settings; // state to be accessed from view
 
     $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
-       var stateData;
+        var stateData;
         $rootScope.prevState = toState;
         $rootScope.prevState.params = toParams;
         stateData = toState.data;
-       if (stateData.requireLogin) {
-            $state.go('login');
-       }
+        // if (stateData.requireLogin) {
+        //      $state.go('login');
+        // }
     });
 
     $rootScope.baseUrl = 'http://itsubscriber.herokuapp.com:80'; 
