@@ -19,8 +19,6 @@ var bowerjsFiles = require("./listAssets/bowerjs.json");
 var cssFiles = require("./listAssets/css.json");
 var jsFiles = require("./listAssets/scripts.json");
 
-// var logincssFiles = require('./listAssets/logincss.json');
-
 var enviroments = {
   "development" : {
   },
@@ -97,12 +95,6 @@ gulp.task('minify-own-styles', function(){
       .pipe(concatCss('app.css'))
       .pipe(gulp.dest('build/assets/css'))
 });
-
-// gulp.task('minify-login-styles', function(){
-//   return gulp.src(logincssFiles)
-//       .pipe(concatCss('login.min.css'))
-//       .pipe(gulp.dest('build/assets/css'))
-// });
 
 gulp.task('minify-own-sources', function() {
   gulp.src(['app/modules/*.module.js' ,'app/modules/**/*.js','app/js/*.js', 'app/js/controllers/*.js', 'app/directives/**/*.js'])
