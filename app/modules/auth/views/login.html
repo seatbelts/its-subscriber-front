@@ -1,21 +1,26 @@
 <div autoscroll="false" class="ng-zoomBackDown ng-fluid ng-scope">
-  <div class="block-center mt-xl wd-xl ng-scope">
+  <div class="col-md-12 block-center ng-scope">
     <div class="panel panel-dark panel-flat">
       <div class="panel-heading text-center">
-        <img src="assets/img/logo.png" alt="App Logo" class="img-responsive mycenter"/>
+        <img src="assets/img/logo.png" alt="App Logo" height="10" widht="10" class="img-responsive mycenter"/>
       </div>
-      <div class="panel-body">
-        <p class="text-center pv">Iniciar Sesión</p>
-        <form role="form" class="mb-xs" ng-submit="login()">
-          <div class="form-group has-feedback">
-            <input placeholder="Usuario" ng-model="model.email" required="required" class="form-control"/><span class="fa fa-user form-control-feedback text-muted"></span>
-          </div>
-          <div class="form-group has-feedback">
-            <input placeholder="Contraseña" ng-model="model.password" type="password" required="required" class="form-control"/><span class="fa fa-lock form-control-feedback text-muted"></span>
-          </div>
-          <button type="submit" class="btn btn-block btn-primary">Ingresar</button>
-        </form>
-        <div class="text-center"><h3>No tienes una cuenta? <a href="#/signup">Crea una</a></h3></div>
+      <div class="panel-body" align="center">
+        <div class="col-md-8 col-sm-12">
+          <img src="assets/img/login1.jpg" alt="ccpi" height="500" widht="500" class="img-responsive mycenter"/>
+        </div>
+        <div class="col-md-4 col-sm-12 panel-body">
+          <form role="form" ng-submit="login()">
+            <div class="caption-subject font-blue-madison bold uppercase"> <h2>Iniciar Sesión</h2></div></br>
+            <div class="form-group has-feedback">
+              <input placeholder="Matrícula" ng-model="model.email" required="required" class="form-control"/><span class="fa fa-user form-control-feedback text-muted"></span>
+            </div>
+            <div class="form-group has-feedback">
+              <input placeholder="Contraseña" ng-model="model.password" type="password" required="required" class="form-control"/><span class="fa fa-lock form-control-feedback text-muted"></span>
+            </div>
+            <button type="submit" class="btn btn-block btn-primary">Ingresar</button>
+            <div class="text-center"><h4>¿No tienes cuenta? <a href="#/signup">Crear Cuenta</a></h4></div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
