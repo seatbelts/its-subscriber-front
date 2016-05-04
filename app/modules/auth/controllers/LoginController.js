@@ -1,26 +1,19 @@
-(function() {
-	var LoginController;
-	LoginController = function($scope, $state, $rootScope, AuthService) {
-
-		console.log('ayyy');
-
+angular.module('its.auth')
+	.controller('LoginController', ['$scope', '$state', '$rootScope', 'AuthService', function($scope, $state, $rootScope, AuthService){
+		
 		$scope.model = {
 			username: '',
 			password: ''
-		};
-
-		$scope.login = function() {
-			console.log('yes');
 		}
 
-		/*return $scope.login = function() {
-			return AuthService.login($scope.model)
-					.succes(function(response) {
-						return $state.go('app.dashboard');
-					}).error(function(err) {
+		console.log($rootScope.baseUrl)
 
-					});
-		};*/
-	};
-	return angular.module('its.auth').controller('LoginController', LoginController);
-})();
+		$scope.login = function() {
+			AuthService.login($scope.model)
+				.success(function (response) {
+					$state.go('app.dashboard')
+				}).error(function(err){})
+			//$state.go('app.dashboard');
+		};
+
+	}]);

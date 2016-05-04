@@ -1,7 +1,5 @@
-(function() {
-	var InscribirController;
-	InscribirController = function($scope, $state, $rootScope) {
-
+angular.module('its.proyectos')
+	.controller('InscribirController', ['$scope', '$state', '$rootScope', function($scope, $state, $rootScope){
 		$scope.proyecto = {};
 	    $scope.proyecto.integrantes = []
 	    $scope.integrantes = {}
@@ -12,7 +10,4 @@
 			console.log($scope.proyecto.integrantes);
 			$scope.integrantes = {};
 		};
-
-	};
-	return angular.module('its.proyectos').controller('InscribirController', InscribirController);
-})();
+	}]);

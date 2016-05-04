@@ -97,7 +97,10 @@ gulp.task('minify-own-styles', function(){
 });
 
 gulp.task('minify-own-sources', function() {
-  gulp.src(['app/modules/*.module.js' ,'app/modules/**/*.js','app/js/*.js', 'app/js/controllers/*.js', 'app/directives/**/*.js'])
+  gulp.src(['app/modules/**/*.module.js' , 'app/services/**/*.js', 'app/modules/**/*.js','app/js/*.js'])
+    .pipe(
+      gulpif(/[.]coffee$/, coffee({bare: true}).on('error', gutil.log)
+    ))
     .pipe(ngAnnotate())
     .pipe(concat('app.min.js'))
     .pipe(gulp.dest("build/assets/js/"))
@@ -111,7 +114,7 @@ gulp.task('index', function(){
 });
  
 gulp.task('watch', function () {
-  gulp.watch(['./app/**/*.coffee','./app/js/*.js'], ['minify-own-sources']);
+  gulp.watch(['./app/**/*.coffee','./app/**/*.js'], ['minify-own-sources']);
   gulp.watch(['./app/assets/css/**/*.css'],['minify-own-styles']);
   gulp.watch(['./app/**/*.html', './app/**/*.jade', '!app/index.jade'], ['templates']);
   gulp.watch(['app/index.html'], ['index']);

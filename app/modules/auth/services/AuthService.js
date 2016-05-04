@@ -1,8 +1,8 @@
-(function() {
-  var AuthService;
-  AuthService = function($http, Session, $rootScope, $q) {
-    var authService;
-    authService = {};
+angular.module('its.auth')
+  .factory('AuthService', ['$http', '$rootScope', '$q', function($http, Session, $rootScope, $q){
+    
+    var authService = {}
+
     authService.login = function(credentials) {
       return $http({
         method: 'POST',
@@ -12,7 +12,7 @@
           'Content-Type': 'application/x-www-form-urlencoded'
         }
       }).success(function(data) {
-        Session.create(data);
+        //Session.create(data);
         $rootScope.permissions = {};
         $rootScope.permissions[data.rol.nombre] = true;
         return data;
@@ -20,7 +20,8 @@
         return err;
       });
     };
-    authService.logout = function() {
+
+    /*authService.logout = function() {
       return $http({
         method: 'delete',
         url: $rootScope.baseUrl + '/logout'
@@ -60,8 +61,8 @@
         }
       }
       return false;
-    };
+    };*/
+
+
     return authService;
-  };
-  return angular.module('its.auth').factory("AuthService", AuthService);
-})();
+  }]);
