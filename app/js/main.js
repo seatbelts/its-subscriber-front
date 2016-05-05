@@ -109,6 +109,12 @@ MetronicApp.controller('AppController', ['$scope', '$rootScope', function($scope
     });
 }]);
 
+
+MetronicApp.controller('DashboardController', ['$scope', 'APIServices', function($scope, APIServices) {
+    console.log('DashboardController')
+}]);
+
+
 /***
 Layout Partials.
 By default the partials are loaded through AngularJS ng-include directive. In case they loaded in server side(e.g: PHP include function) then below partial 
@@ -181,7 +187,8 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
             title: 'Incio',
             views: {
                 'contentView': {
-                    templateUrl: 'views/dashboard.html'
+                    templateUrl: 'views/dashboard.html',
+                    controller: 'DashboardController'
                 }
             }
             // data: {
@@ -208,7 +215,60 @@ MetronicApp.run(["$rootScope", "$stateParams", "$templateCache","settings", "$st
 
     // $rootScope.baseUrl = 'http://itsubscriber.herokuapp.com:80'; 
     // $rootScope.baseUrl = 'http://localhost:8001'; 
-
 }]);
+
+// MetronicApp.run(function ($localStorage, $location) {
+//     if ($localStorage.user.token) {
+//       // Active session
+//       console.log('Active session');
+//       $location.path('/app/dashboard');
+//     } else {
+//       // Without session
+//       console.log('Without session');
+//       $localStorage.user = {};
+//       $location.path('/login');
+//     }
+//   });
+
+MetronicApp.factory('httpRequestInterceptor', function($localStorage, $location, $q) {
+    return {
+        request: request,
+        responseError: responseError
+    };
+
+    function request(config) {
+        // if (!config.url) {
+        //     config.url = "#";
+        // }
+
+        if (config.url.endsWith('login')) {
+            config.headers = {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Accept': 'application/x-www-form-urlencoded'
+            };
+        } else {
+            // config.headers = {
+            //     'Content-Type': 'application/json',
+            //     'Accept': 'application/json'
+            // };
+            if ($localStorage.user.token !== undefined) {
+                config.headers.Authorization = 'Token ' + $localStorage.user.token;
+            }
+        }
+
+        return config;
+    }
+
+    function responseError(response) {
+        if (response.status === 403) {
+            $location.url('/login');
+        }
+        return response;
+    }
+});
+
+MetronicApp.config(function ($httpProvider) {
+    $httpProvider.interceptors.push('httpRequestInterceptor');
+});
 
 var myApp = angular.module('its', ["MetronicApp"]);
