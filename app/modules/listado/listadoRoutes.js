@@ -9,6 +9,15 @@
 					controller: 'ListadoController'
 				}
 			}
+		})
+		.state('app.viewProject', {
+			url: '/ver/:id',
+			views: {
+				'contentView': {
+					templateUrl: 'modules/listado/views/detalle.html',
+					controller: 'DetalleProyectoController'
+				}
+			}
 		});
 	};
 	return angular.module('its.listado').config(ListadoRoutes);

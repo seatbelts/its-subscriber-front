@@ -72,6 +72,7 @@ angular.module('its.auth')
 						console.log('APIServices', res);
 						if (res.status === 201) {
 							// Redirect to dashboard
+							$scope.model = {};
 							console.log('Redirect to dashboard')
 							toaster.pop('success', 'Exito', 'La cuenta se creo con exito');
 							$localStorage.user = res.data;

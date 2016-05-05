@@ -1,0 +1,70 @@
+<h3 class="page-title"> Proyectos </h3>
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="#/app/dashboard.html">Inicio</a>
+        </li>
+    </ul>
+</div>
+<!-- END PAGE HEADER-->
+<!-- BEGIN MAIN CONTENT -->
+
+<div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN PORTLET-->
+        <div class="portlet box blue-hoki">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="icon-note"></i> Proyecto </div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse"> </a>
+                    <a href="javascript:;" class="reload"> </a>
+                </div>
+            </div>
+            <div class="portlet-body form">
+                <!-- BEGIN FORM-->
+                <form id="form-username" class="form-horizontal form-bordered" ng-submit="ipc.inscribir()" novalidate="">
+                    <div class="form-body">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Nombre del proyecto</label>
+                            <div class="col-md-9">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" name="proyectname" id="proyectname" ng-model="proyecto.nombre" placeholder="Ingresar nombre del proyecto (E.j: Osos)" required="required" readonly> </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Materia(s)</label>
+                            <div class="col-md-9">
+                                <div class="input-icon right">
+                                    <div ng-repeat="materia in proyecto.materia" required="required">
+                                        <label>
+                                            {{materia}}
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Categoría</label>
+                            <div class="col-md-9">
+                                <input class="form-control" ng-model="proyecto.categoria" readonly></input>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-offset-3 col-md-9">
+                                <button type="submit" class="btn green">
+                                    <i class="fa fa-check"></i> Guardar</button>
+                                <button type="button" class="btn default">Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- END PORTLET-->
+    </div>
+</div>

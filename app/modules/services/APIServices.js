@@ -39,6 +39,7 @@
 			// Read
 			getEvents: getEvents,
 			getProjects: getProjects,
+            getOneProject: getOneProject,
 			getTeams: getTeams,
 			getStudents: getStudents,
 			getSubject: getSubject,
@@ -154,6 +155,14 @@
 
         function getProjects() {
             return $http.get(endpoints.proyectos)
+                .then(response)
+                .catch(response);
+        }
+
+        function getOneProject(id) {
+            url = endpoints.proyectos + '' + id + '/';
+            console.log(url);
+            return $http.get(url)
                 .then(response)
                 .catch(response);
         }

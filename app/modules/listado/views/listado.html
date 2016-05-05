@@ -34,70 +34,14 @@
                                 <th> Nombre del Proyecto </th>
                                 <th> Materia </th>
                                 <th> Ver </th>
-                                <th> Editar </th>
-                                <th> Borrar </th>
-                                <th> Aceptar </th>
                             </tr>
                         </thead>
-                        <tbody class="text-center">
+                        <tbody class="text-center" ng-repeat="proyecto in proyectos">
                             <tr class="odd gradeX">
-                                <td> Osos </td>
-                                <td> IHC </td>
+                                <td> {{proyecto.nombre}} </td>
+                                <td> {{proyecto.materia}} </td>
                                 <td>
-                                    <a><button class="btn btn-info"><i class="fa fa-eye"></i></button></a>
-                                </td>
-                                <td>
-                                    <a><button class="btn btn-info"><i class="icon-pencil"></i></button></a>
-                                </td>
-                                <td> <a><button class="btn btn-danger" ng-click="borrarProyecto"><i class="icon-trash"></i></button></a> </td>
-                                <td>
-                                    <a><button class="btn btn-success"><i class="icon-check"></i></button></a>
-                                    <a><button class="btn btn-danger"><i class="icon-close"></i></button></a>
-                                </td>
-                            </tr>
-                            <tr class="odd gradeX">
-                                <td> Osos </td>
-                                <td> IHC </td>
-                                <td>
-                                    <a><button class="btn btn-info"><i class="fa fa-eye"></i></button></a>
-                                </td>
-                                <td>
-                                    <a><button class="btn btn-info" ng-click="actualizarProyecto"><i class="icon-pencil"></i></button></a>
-                                </td>
-                                <td> <a><button class="btn btn-danger" ng-click="borrarProyecto"><i class="icon-trash"></i></button></a> </td>
-                                <td>
-                                    <a><button class="btn btn-success"><i class="icon-check"></i></button></a>
-                                    <a><button class="btn btn-danger"><i class="icon-close"></i></button></a>
-                                </td>
-                            </tr>
-                            <tr class="odd gradeX">
-                                <td> Osos </td>
-                                <td> IHC </td>
-                                <td>
-                                    <a><button class="btn btn-info"><i class="fa fa-eye"></i></button></a>
-                                </td>
-                                <td>
-                                    <a><button class="btn btn-info" ng-click="actualizarProyecto"><i class="icon-pencil"></i></button></a>
-                                </td>
-                                <td> <a><button class="btn btn-danger" ng-click="borrarProyecto"><i class="icon-trash"></i></button></a> </td>
-                                <td>
-                                    <a><button class="btn btn-success"><i class="icon-check"></i></button></a>
-                                    <a><button class="btn btn-danger"><i class="icon-close"></i></button></a>
-                                </td>
-                            </tr>
-                            <tr class="odd gradeX">
-                                <td> Osos </td>
-                                <td> IHC </td>
-                                <td>
-                                    <a><button class="btn btn-info"><i class="fa fa-eye"></i></button></a>
-                                </td>
-                                <td>
-                                    <a><button class="btn btn-info" ng-click="actualizarProyecto"><i class="icon-pencil"></i></button></a>
-                                </td>
-                                <td> <a><button class="btn btn-danger" ng-click="borrarProyecto"><i class="icon-trash"></i></button></a> </td>
-                                <td>
-                                    <a><button class="btn btn-success"><i class="icon-check"></i></button></a>
-                                    <a><button class="btn btn-danger"><i class="icon-close"></i></button></a>
+                                    <a><button ng-click="viewProject(proyecto.id)" class="btn btn-info"><i class="fa fa-eye"></i></button></a>
                                 </td>
                             </tr>
                         </tbody>
