@@ -1,6 +1,6 @@
 angular.module('its.auth')
-	.controller('LoginController', ['$scope', '$state', '$rootScope', 'APIServices', 
-			function($scope, $state, $rootScope, APIServices){
+
+	.controller('LoginController', ['$scope', '$state', '$rootScope', 'APIServices', 'toaster', function($scope, $state, $rootScope, APIServices, toaster){
 		
 		$scope.model = {
 			username: '',
