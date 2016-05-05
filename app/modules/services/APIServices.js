@@ -20,7 +20,8 @@
             alumnos: url + '/v1/alumnos/',
             usuarios: url + '/v1/usuarios/',
             materias: url + '/v1/materias/',
-            maestros: url + '/v1/maestros/'
+            maestros: url + '/v1/maestros/',
+            categorias: url + '/v1/categorias/'
         };
 
         var services = {
@@ -31,7 +32,8 @@
 			createTeams: createTeams,
 			createStudents: createStudents,
 			createSubject: createSubject,
-			createTeachers: createTeachers,
+            createTeachers: createTeachers,
+			createCategories: createCategories,
 			// Read
 			getEvents: getEvents,
 			getProjects: getProjects,
@@ -39,6 +41,7 @@
 			getStudents: getStudents,
 			getSubject: getSubject,
 			getTeachers: getTeachers,
+            getCategories: getCategories,
 			// Update
 			updateEvents: updateEvents,
 			updateProjects: updateProjects,
@@ -46,13 +49,15 @@
 			updateStudents: updateStudents,
 			updateSubject: updateSubject,
 			updateTeachers: updateTeachers,
+            updateCategories: updateCategories,
 			// Delete
 			deleteEvents: deleteEvents,
 			deleteProjects: deleteProjects,
 			deleteTeams: deleteTeams,
 			deleteStudents: deleteStudents,
 			deleteSubject: deleteSubject,
-			deleteTeachers: deleteTeachers
+			deleteTeachers: deleteTeachers,
+            deleteCategories: deleteCategories
         };
 
         return services;
@@ -115,6 +120,12 @@
                 .catch(response);
         }
 
+        function createCategories(data) {
+            return $http.post(endpoints.categorias, data)
+                .then(response)
+                .catch(response);
+        }
+
         /*
          * Read Services
          */
@@ -151,6 +162,12 @@
 
         function getTeachers() {
             return $http.get(endpoints.maestros)
+                .then(response)
+                .catch(response);
+        }
+
+        function getCategories() {
+            return $http.get(endpoints.categorias)
                 .then(response)
                 .catch(response);
         }
@@ -195,6 +212,12 @@
                 .catch(response);
         }
 
+        function updateCategories(url, obj) {
+            return $http.put(url, obj)
+                .then(response)
+                .catch(response);
+        }
+
         /*
          * Delete Services
          */
@@ -234,6 +257,13 @@
                 .then(response)
                 .catch(response);
         }
+
+        function deleteCategories(url) {
+            return $http.delete(url)
+                .then(response)
+                .catch(response);
+        }
+
     }
 
 })();
