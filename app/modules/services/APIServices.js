@@ -25,7 +25,34 @@
 
         var services = {
             login: login,
-            getMaterias: getMaterias
+            // Create
+			createEvents: createEvents,
+			createProjects: createProjects,
+			createTeams: createTeams,
+			createStudents: createStudents,
+			createSubject: createSubject,
+			createTeachers: createTeachers,
+			// Read
+			getEvents: getEvents,
+			getProjects: getProjects,
+			getTeams: getTeams,
+			getStudents: getStudents,
+			getSubject: getSubject,
+			getTeachers: getTeachers,
+			// Update
+			updateEvents: updateEvents,
+			updateProjects: updateProjects,
+			updateTeams: updateTeams,
+			updateStudents: updateStudents,
+			updateSubject: updateSubject,
+			updateTeachers: updateTeachers,
+			// Delete
+			deleteEvents: deleteEvents,
+			deleteProjects: deleteProjects,
+			deleteTeams: deleteTeams,
+			deleteStudents: deleteStudents,
+			deleteSubject: deleteSubject,
+			deleteTeachers: deleteTeachers
         };
 
         return services;
@@ -47,21 +74,6 @@
                 .then(response)
                 .catch(response);
         }
-
-
-        Events
-        Projects
-        Teams
-        Students
-        Subject
-        Teachers
-
-        eventos
-        proyectos
-        equipos
-        alumnos
-        materias
-        maestros
 
         /*
          * Create Services
