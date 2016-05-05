@@ -9,7 +9,8 @@ var MetronicApp = angular.module("MetronicApp", [
     "oc.lazyLoad",  
     "ngSanitize",
     "ngRoute",
-    "templates"
+    "templates",
+    'API'
 ]); 
 
 /* Configure ocLazyLoader(refer: https://github.com/ocombe/ocLazyLoad) */
@@ -196,7 +197,9 @@ MetronicApp.run(["$rootScope", "$stateParams", "$templateCache","settings", "$st
         // }
     });
 
-    $rootScope.baseUrl = 'http://itsubscriber.herokuapp.com:80'; 
+    // $rootScope.baseUrl = 'http://itsubscriber.herokuapp.com:80'; 
+    $rootScope.baseUrl = 'http://localhost:8001'; 
+
 }]);
 
 var myApp = angular.module('its', ["MetronicApp",

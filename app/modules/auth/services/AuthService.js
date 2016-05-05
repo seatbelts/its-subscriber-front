@@ -11,12 +11,11 @@ angular.module('its.auth')
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
         }
-      }).success(function(data) {
-        //Session.create(data);
+      }).then(function(data) {
         $rootScope.permissions = {};
         $rootScope.permissions[data.rol.nombre] = true;
         return data;
-      }).error(function(err) {
+      }).catch(function(err) {
         return err;
       });
     };
