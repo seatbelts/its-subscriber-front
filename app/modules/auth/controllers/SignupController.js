@@ -17,7 +17,6 @@ angular.module('its.auth')
 			for (k in testObject) {
 				v = testObject[k];
 				l++;
-				console.log(k + ': ' + v);
 				if (!v || v === '') {
 					switch(k) {
 						case 'username':
@@ -62,6 +61,7 @@ angular.module('its.auth')
 			$scope.validarObject = $scope.model;
 			console.log($scope.validarObject);
 			if (validarForm($scope.validarObject)) {
+				delete $scope.model.passwordRepeat;
 				// Hacer el post
 				toaster.pop('success', 'Cuenta Creada');
 				$state.go('app.dashboard');

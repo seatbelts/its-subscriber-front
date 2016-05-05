@@ -9,7 +9,7 @@
 
 		function APIServices($http) {
 
-			var url = 'http://localhost:8001';
+			var url = 'http://itsubscriber.herokuapp.com:80';
 			var endpoints = {};
 			endpoints.login = url + '/login/';
 

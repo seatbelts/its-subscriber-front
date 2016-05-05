@@ -12,11 +12,14 @@ var MetronicApp = angular.module("MetronicApp", [
     "ngSanitize",
     "ngRoute",
     "templates",
-    'API'
+    'API',
     "its.auth",
     "its.listado",
     "its.proyectos",
-    "its.usuarios"
+    "its.usuarios",
+    "its.maestros",
+    "its.materias",
+    "its.categorias"
 ]); 
 
 /* Configure ocLazyLoader(refer: https://github.com/ocombe/ocLazyLoad) */
@@ -203,8 +206,8 @@ MetronicApp.run(["$rootScope", "$stateParams", "$templateCache","settings", "$st
         // }
     });
 
-    // $rootScope.baseUrl = 'http://itsubscriber.herokuapp.com:80'; 
-    $rootScope.baseUrl = 'http://localhost:8001'; 
+    $rootScope.baseUrl = 'http://itsubscriber.herokuapp.com:80'; 
+    //$rootScope.baseUrl = 'http://its:8001'; 
 
 }]);
 
