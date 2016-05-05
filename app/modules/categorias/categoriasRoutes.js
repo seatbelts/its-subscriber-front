@@ -1,10 +1,10 @@
 (function() {
 	var CategoriasRoutes;
 	CategoriasRoutes = function($stateProvider) {
-		return $stateProvider.state('categorias', {
+		return $stateProvider.state('app.categorias', {
 			url: '/categorias',
 			views: {
-				'mainView': {
+				'contentView': {
 					templateUrl: 'modules/categorias/views/categorias.html',
 					controller: 'CategoriasController'
 				}

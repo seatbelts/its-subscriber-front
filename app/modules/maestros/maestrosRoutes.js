@@ -1,12 +1,21 @@
 (function() {
 	var MaestrosRoutes;
 	MaestrosRoutes = function($stateProvider) {
-		return $stateProvider.state('maestros', {
-			url: '/login',
+		return $stateProvider.state('app.maestros', {
+			url: '/maestros',
 			views: {
-				'mainView': {
+				'contentView': {
 					templateUrl: 'modules/maestros/views/maestros.html',
 					controller: 'MaestrosController'
+				}
+			}
+		})
+		.state('app.crear', {
+			url: '/crear',
+			views: {
+				'contentView': {
+					templateUrl: 'modules/maestros/views/crearMaestros.html',
+					controller: 'CrearMaestrosController'
 				}
 			}
 		});
