@@ -1,84 +1,73 @@
 angular.module('its.proyectos')
     .controller('InscribirController', ['$state', 'APIServices', 'toaster', function($state, APIServices, toaster) {
 
-    	var ipc = this; 
-    	ipc.materias = [];
-    	ipc.categorias = [];
-    	// integrantes del equipo
-    	ipc.proyecto = {};
-        ipc.proyecto.integrantes = [];
-        // TODO Agregar un searchbox o algo para cargar estos
-		ipc.alumnos = [];
+        var ipc = this;
+        // Arreglos con promises de los servicios
+        ipc.materias = [];
+        ipc.categorias = [];
+        ipc.alumnos = [];
 
-		// Variable temporal para agregar al arreglo de alumnos del equipo
+        // Variable temporal para agregar al arreglo de alumnos del equipo
         ipc.integrante = {};
 
+        // Project model
+        ipc.project = {};
+        ipc.project = {
+            nombre: '',
+            description: '', //Remove after
+            mesa: '1', //Remove after
+            // archivo: '',
+            // evento: 1, //Default evento 1
+            categoria: '',
+            materia: []
+            // integrantes: []
+        };
 
-		// Project model
-		ipc.project = {};
-		ipc.project = {
-			nombre: '',
-			description: '', //Remove after
-			materia: [],
-			mesa : '', //Remove after
-			// archivo: '',
-			evento: 1, //Default evento 1
-			categoria: ''
-		};
+        ipc.checkSubjects = function(e) {
+            if (e.isChecked) {
+                ipc.project.materia.push(e);
+            } else {
+                var pos = ipc.project.materia.indexOf(e);
+                ipc.project.materia.splice(pos, 1);
+            }
+        }
 
-		ipc.checkSubjects = function (e) {
-			if (e.isChecked) {
-				ipc.project.materia.push(e);
-			} else {
-				var pos = ipc.project.materia.indexOf(e);
-				ipc.project.materia.splice(pos, 1);
-			}
-		}
+        ipc.addStudent = function(student) {
+            var pos = ipc.project.integrantes.indexOf(student);
+            if (pos > -1) {
+                toaster.pop('warning', 'Ya ha sido agregado este estudiante');
+            } else {
+                ipc.project.integrantes.push(student);
+                toaster.pop('success', 'Estudiante agregado');
+            }
+        };
 
-		ipc.addStudent = function (student) {
-			var pos = ipc.proyecto.integrantes.indexOf(student);
-			if (pos > -1) {
-            	toaster.pop('warning', 'Ya ha sido agregado este estudiante');
-			} else {
-				ipc.proyecto.integrantes.push(student);
-            	toaster.pop('success', 'Estudiante agregado');
-			}
-		};
-
-		ipc.removeStudent = function (student) {
+        ipc.removeStudent = function(student) {
             toaster.pop('warning', 'Estudiante eliminado');
-			var pos = ipc.proyecto.integrantes.indexOf(student);
-			ipc.proyecto.integrantes.splice(pos, 1);
-		}
+            var pos = ipc.project.integrantes.indexOf(student);
+            ipc.project.integrantes.splice(pos, 1);
+        }
 
-// nombre = models.CharField(max_length=30)
-// description = models.TextField(blank=True, null=True)
-// materia = models.ManyToManyField(Materia)
-// evento = models.ForeignKey(Evento, on_delete=models.CASCADE)
-// mesa = models.CharField(max_length=3, null=True)
-// archivo = models.FileField(null=True, upload_to=file_name)
-// categoria = models.ForeignKey(Categorias, on_delete=models.CASCADE, null=True)
+        function activate() {
+            APIServices.getSubject()
+                .then(function(res) {
+                    ipc.materias = res.data;
+                });
 
-		function activate () {
-		 	APIServices.getSubject()
-		 		.then(function(res){
-		 			ipc.materias = res.data;
-		 		});
+            APIServices.getCategories()
+                .then(function(res) {
+                    ipc.categorias = res.data;
+                });
 
-		 	APIServices.getCategories()
-		 		.then(function(res){
-		 			ipc.categorias = res.data;
-		 		});
+            APIServices.getStudents()
+                .then(function(res) {
+                    ipc.alumnos = res.data;
+                });
+        }
 
-		 	APIServices.getStudents()
-		 		.then(function(res){
-		 			ipc.alumnos = res.data;
-		 		});
-		}
+        activate();
 
-		activate();
-
-		// TODO Revisar de nuevo las validaciones
+        // TODO Revisar de nuevo las validaciones
         var validarProyecto = function(testObject) {
             var k, l, s, v;
             s = Object.keys(testObject).length;
@@ -113,10 +102,34 @@ angular.module('its.proyectos')
         }
 
         ipc.inscribir = function() {
-            ipc.validarProy = ipc.proyecto;
-            if (validarProyecto(ipc.validarProy)) {
-                toaster.pop('success', 'Proyecto Creado');
-            }
-        };
 
+            // TODO Validar magicamente 
+            // ipc.validarProy = ipc.proyecto;
+            // if (validarProyecto(ipc.validarProy)) {
+            //     toaster.pop('success', 'Proyecto Creado');
+            // }
+
+            var data = {
+				nombre: ipc.project.nombre,
+				description: ipc.project.description,
+				categoria: ipc.project.categoria.url,
+				evento: APIServices.getUrl() + '/v1/eventos/1/',
+				mesa: ipc.project.mesa,
+				// Check this service
+				archivo: ipc.project.archivo,
+				materia: []
+            };
+			ipc.project.materia.forEach( function(element, index) {
+				data.materia.push(element.url);
+			});
+
+
+            APIServices.createProjects(data)
+            	.then(function(res){
+                	toaster.pop('success', 'Proyecto creado');
+            	})
+            	.catch(function (error) {
+                	toaster.pop('warning', 'Ha ocurrido un problema');
+            	});
+        };
     }]);

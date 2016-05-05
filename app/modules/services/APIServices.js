@@ -57,7 +57,8 @@
 			deleteStudents: deleteStudents,
 			deleteSubject: deleteSubject,
 			deleteTeachers: deleteTeachers,
-            deleteCategories: deleteCategories
+            deleteCategories: deleteCategories,
+            getUrl: getUrl
         };
 
         return services;
@@ -262,6 +263,10 @@
             return $http.delete(url)
                 .then(response)
                 .catch(response);
+        }
+
+        function getUrl () {
+            return url;
         }
 
     }
