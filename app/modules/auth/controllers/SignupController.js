@@ -1,12 +1,12 @@
 angular.module('its.auth')
-	.controller('SignupController', ['$scope', '$state', '$rootScope', 'toaster', function($scope, $state, $rootScope, toaster){
+	.controller('SignupController', ['$scope', '$state', '$rootScope', '$localStorage', 'toaster', 'APIServices', function($scope, $state, $rootScope, $localStorage, toaster, APIServices){
 		
 		console.log('ayyy')
 		$scope.model = {};
 		$scope.model.username = null;
 		$scope.model.first_name = null;
 		$scope.model.last_name = null;
-		$scope.model.mail = null;
+		$scope.model.email = null;
 		$scope.model.telefono = null;
 		$scope.model.password = null;
 		$scope.model.passwordRepeat = null;
@@ -32,7 +32,7 @@ angular.module('its.auth')
 							toaster.pop('error', 'Falta poner los apellidos');
 							console.log(k);
 							return false;
-						case 'mail':
+						case 'email':
 							toaster.pop('error', 'Falta poner el correo');
 							console.log(k);
 							return false;
@@ -65,9 +65,22 @@ angular.module('its.auth')
 			console.log($scope.validarObject);
 			if (validarForm($scope.validarObject)) {
 				delete $scope.model.passwordRepeat;
+				console.log($scope.model);
 				// Hacer el post
-				toaster.pop('success', 'Cuenta Creada');
-				$state.go('app.dashboard');
+				APIServices.register($scope.model)
+					.then(function(res) {
+						console.log('APIServices', res);
+						if (res.status === 201) {
+							// Redirect to dashboard
+							console.log('Redirect to dashboard')
+							toaster.pop('success', 'Exito', 'La cuenta se creo con exito');
+							$localStorage.user = res.data;
+						} else {
+							$localStorage.user = {};
+							toaster.pop('error', 'Error', 'Error al crear usuario');
+							console.log('Unable to log');
+						}
+					})
 			}
 		};
 

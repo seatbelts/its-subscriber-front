@@ -129,14 +129,33 @@ MetronicApp.controller('HeaderController', ['$scope', function($scope) {
 }]);
 
 /* Setup Layout Part - Sidebar */
-MetronicApp.controller('SidebarController', ['$scope', '$state', function($scope, $state) {
+MetronicApp.controller('SidebarController', ['$scope', '$state', '$localStorage', function($scope, $state, $localStorage) {
     $scope.$on('$includeContentLoaded', function() {
         Layout.initSidebar(); // init sidebar
     });
 
+    $scope.isAdmin = false;
+    $scope.isLogged = false;
+    $scope.isUser = false;
+
+    checkSession = function () {
+        if ($localStorage.user.role) {
+            $scope.isLogged = true;
+            if ($localStorage.user.role === 'admin') {
+                $scope.isAdmin = true;
+            } else {
+                $scope.isUser = true;
+            }
+        }
+    }
+
     $scope.gotoListado = function() {
         $state.go('app.listado');
     };
+
+    console.log($localStorage.user);
+
+    checkSession();
 
 }]);
 

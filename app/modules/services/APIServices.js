@@ -14,6 +14,7 @@
         var endpoints = {};
         endpoints = {
             login: url + '/login/',
+            register: url + '/register/',
             eventos: url + '/v1/eventos/',
             proyectos: url + '/v1/proyectos/',
             equipos: url + '/v1/equipos/',
@@ -26,6 +27,7 @@
 
         var services = {
             login: login,
+            register: register,
             // Create
 			createEvents: createEvents,
 			createProjects: createProjects,
@@ -81,6 +83,22 @@
                 .catch(response);
         }
 
+<<<<<<< HEAD
+=======
+        function register(credentials) {
+            return $http({
+                method: 'POST',
+                url: endpoints.register,
+                data: $.param(credentials),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+            .then(response)
+            .catch(response);
+        }
+
+>>>>>>> Signup y oculta links dependiendo del rol
         /*
          * Create Services
          */

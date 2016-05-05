@@ -6,8 +6,7 @@
 			views: {
 				'contentView': {
 					templateUrl: 'modules/maestros/views/maestros.html',
-					controller: 'MaestrosController',
-					controllerAs: 'msc'
+					controller: 'MaestrosController'
 				}
 			}
 		})

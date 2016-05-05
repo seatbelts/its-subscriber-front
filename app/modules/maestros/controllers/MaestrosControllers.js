@@ -1,22 +1,11 @@
 angular.module('its.maestros')
-	.controller('MaestrosController', ['$state', 'APIServices', function($state, APIServices) {
-		
-		var msc = this;
-		msc.maestros = [];
+	.controller('MaestrosController', ['$scope', '$state', '$rootScope', 'APIServices', function($scope, $state, $rootScope, APIServices) {
 
-		msc.crearMaestro = function() {
+
+		$scope.maestros = {};
+
+		$scope.crearMaestro = function() {
 			console.log('test');
 			$state.go('app.crear');
 		};
-
-
-		function activate () {
-		 	APIServices.getTeachers()
-		 		.then(function(res){
-		 			console.log('res', res)
-		 			msc.maestros = res.data;
-		 		})
-		}
-
-		activate();
 	}])
