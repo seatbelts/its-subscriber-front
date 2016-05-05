@@ -1,10 +1,10 @@
 (function() {
 	var MateriasRoutes;
 	MateriasRoutes = function($stateProvider) {
-		return $stateProvider.state('materias', {
+		return $stateProvider.state('app.materias', {
 			url: '/materias',
 			views: {
-				'mainView': {
+				'contentView': {
 					templateUrl: 'modules/materias/views/materias.html',
 					controller: 'MateriasController'
 				}
