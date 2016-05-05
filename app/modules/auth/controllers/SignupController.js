@@ -69,10 +69,6 @@ angular.module('its.auth')
 				toaster.pop('success', 'Cuenta Creada');
 				$state.go('app.dashboard');
 			}
-			/*AuthService.login($scope.model)
-				.success(function (response) {
-					$state.go('app.dashboard')
-				}).error(function(err){})*/
 		};
 
 	}]);

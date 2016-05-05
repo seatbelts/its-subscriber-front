@@ -46,7 +46,7 @@ angular.module('its.auth')
 							$state.go('app.dashboard');
 						} else {
 							$localStorage.user = {};
-							toaster.pop('error', 'Error al iniciar sesion');
+							toaster.pop('error', 'Error', 'Error al iniciar sesion');
 							console.log('Unable to log');
 						}
 					});

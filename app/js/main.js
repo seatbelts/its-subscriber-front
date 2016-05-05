@@ -181,8 +181,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
             title: 'Incio',
             views: {
                 'contentView': {
-                    templateUrl: 'views/dashboard.html',
-                    controller: "DashboardController"
+                    templateUrl: 'views/dashboard.html'
                 }
             }
             // data: {
