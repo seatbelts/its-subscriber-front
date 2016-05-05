@@ -39,16 +39,13 @@ angular.module('its.auth')
 					.then(function (res) {
 						console.log('APIServices', res);
 						if (res.status === 200) {
-							// $rootScope.token = res.data.token;
 							// Redirect to dashboard
 							console.log('Redirect to dashboard')
 							toaster.pop('success', 'Exito', 'Login exitoso');
-							$localStorage.user = res.data.data;
-
+							$localStorage.user = res.data;
 							$state.go('app.dashboard');
 						} else {
 							$localStorage.user = {};
-							// TODO add a toaster with "unable to log or something like that"
 							toaster.pop('error', 'Error al iniciar sesion');
 							console.log('Unable to log');
 						}
