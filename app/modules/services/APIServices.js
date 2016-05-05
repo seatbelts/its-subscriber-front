@@ -12,14 +12,14 @@
 			var url = 'http://itsubscriber.herokuapp.com:80';
 			var endpoints = {};
 			endpoints = {
-				login:     url + 'v1/login/',
-				eventos:   url + 'v1/eventos/',
-				proyectos: url + 'v1/proyectos/',
-				equipos:   url + 'v1/equipos/',
-				alumnos:   url + 'v1/alumnos/',
-				usuarios:  url + 'v1/usuarios/',
-				materias:  url + 'v1/materias/',
-				maestros:  url + 'v1/maestros/'
+				login:     url + '/v1/login/',
+				eventos:   url + '/v1/eventos/',
+				proyectos: url + '/v1/proyectos/',
+				equipos:   url + '/v1/equipos/',
+				alumnos:   url + '/v1/alumnos/',
+				usuarios:  url + '/v1/usuarios/',
+				materias:  url + '/v1/materias/',
+				maestros:  url + '/v1/maestros/'
 			};
 
 			var services = {

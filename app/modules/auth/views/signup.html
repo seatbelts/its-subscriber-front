@@ -12,13 +12,16 @@
               <input placeholder="Matrícula" ng-model="model.username"  required="required" class="form-control"/><span class="fa fa-user form-control-feedback text-muted"></span>
             </div>
             <div class="form-group has-feedback">
-              <input placeholder="Nombre(s)" ng-model="model.first_name" required="required" class="form-control"/><span class="fa fa-pencil form-control-feedback text-muted"></span>
+              <input placeholder="Nombre(s)" type="text" ng-model="model.first_name" required="required" class="form-control"/><span class="fa fa-pencil form-control-feedback text-muted"></span>
             </div>	
             <div class="form-group has-feedback">
-              <input placeholder="Apellido(s)" ng-model="model.last_name" required="required" class="form-control"/><span class="fa fa-pencil form-control-feedback text-muted"></span>
+              <input placeholder="Apellido(s)" type="text" ng-model="model.last_name" required="required" class="form-control"/><span class="fa fa-pencil form-control-feedback text-muted"></span>
             </div>
             <div class="form-group has-feedback">
-              <input placeholder="E-mail" ng-model="model.mail" required="required" class="form-control"/><span class="fa fa-envelope form-control-feedback text-muted"></span>
+              <input placeholder="E-mail" type="email" ng-model="model.mail" required="required" class="form-control"/><span class="fa fa-envelope form-control-feedback text-muted"></span>
+            </div>
+            <div class="form-group has-feedback">
+              <input placeholder="Telefono" type="tel" ng-model="model.telefono" required="required" class="form-control"/><span class="fa fa-phone form-control-feedback text-muted"></span>
             </div>
             <div class="form-group has-feedback">
               <input placeholder="Contraseña" ng-model="model.password" type="password" required="required" class="form-control"/><span class="fa fa-lock form-control-feedback text-muted"></span>

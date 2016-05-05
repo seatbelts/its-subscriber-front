@@ -7,6 +7,7 @@ angular.module('its.auth')
 		$scope.model.first_name = null;
 		$scope.model.last_name = null;
 		$scope.model.mail = null;
+		$scope.model.telefono = null;
 		$scope.model.password = null;
 		$scope.model.passwordRepeat = null;
 
@@ -35,6 +36,9 @@ angular.module('its.auth')
 							toaster.pop('error', 'Falta poner el correo');
 							console.log(k);
 							return false;
+						case 'telefono':
+							toaster.pop('error', 'Falta el telefono');
+							return false;
 						case 'password':
 							toaster.pop('error', 'Falta poner la contrasena');
 							console.log(k);
@@ -57,7 +61,6 @@ angular.module('its.auth')
 		}
 
 		$scope.signup = function() {
-			console.log('noooo');
 			$scope.validarObject = $scope.model;
 			console.log($scope.validarObject);
 			if (validarForm($scope.validarObject)) {
