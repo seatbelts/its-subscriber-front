@@ -8,11 +8,12 @@
 		APIServices.$inject = ['$http'];
 
 		function APIServices($http) {
-
+			
+    		// var url = 'http://localhost:8001'; 
 			var url = 'http://itsubscriber.herokuapp.com:80';
 			var endpoints = {};
 			endpoints = {
-				login:     url + '/v1/login/',
+				login:     url + '/login/',
 				eventos:   url + '/v1/eventos/',
 				proyectos: url + '/v1/proyectos/',
 				equipos:   url + '/v1/equipos/',

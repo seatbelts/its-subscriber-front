@@ -1,6 +1,7 @@
 angular.module('its.auth')
 
-	.controller('LoginController', ['$scope', '$state', '$rootScope', 'APIServices', 'toaster', function($scope, $state, $rootScope, APIServices, toaster){
+	.controller('LoginController', ['$scope', '$state', '$rootScope', 'APIServices', 'toaster', '$localStorage',
+		function($scope, $state, $rootScope, APIServices, toaster, $localStorage){
 		
 		$scope.model = {};
 		$scope.model.username = null;
@@ -38,13 +39,15 @@ angular.module('its.auth')
 					.then(function (res) {
 						console.log('APIServices', res);
 						if (res.status === 200) {
-							$rootScope.token = res.data.token;
+							// $rootScope.token = res.data.token;
 							// Redirect to dashboard
 							console.log('Redirect to dashboard')
 							toaster.pop('success', 'Exito', 'Login exitoso');
+							$localStorage.user = res.data.data;
+
 							$state.go('app.dashboard');
 						} else {
-							$rootScope.token = '';
+							$localStorage.user = {};
 							// TODO add a toaster with "unable to log or something like that"
 							toaster.pop('error', 'Error al iniciar sesion');
 							console.log('Unable to log');

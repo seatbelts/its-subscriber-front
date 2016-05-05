@@ -15,7 +15,7 @@
     "angular-cookies": "latest",
     "angular-animate": "^1.5.5",
     "angular-ui-utils": "latest",
-    "ngstorage": "latest",
+    "ngstorage": "^0.3.10",
     "angular-sanitize": "latest",
     "oclazyload": "latest",
     "angular-resource": "latest",

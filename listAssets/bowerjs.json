@@ -18,5 +18,6 @@
 	"bower_components/jquery-validation/dist/jquery.validate.min.js",
 	"bower_components/jquery-validation/dist/additional-methods.min.js",
 	"bower_components/select2/dist/js/select2.full.min.js",
-	"bower_components/jquery-backstretch/jquery.backstretch.min.js"
+	"bower_components/jquery-backstretch/jquery.backstretch.min.js",
+	"bower_components/ngstorage/ngStorage.min.js"
 ]
