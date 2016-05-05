@@ -27,22 +27,26 @@
             </div>
             <div class="portlet-body form">
                 <!-- BEGIN FORM-->
-                <form id="form-username" class="form-horizontal form-bordered" ng-submit="crearProyecto()">
+                <form id="form-username" class="form-horizontal form-bordered" ng-submit="inscribir()" novalidate="" >
                     <div class="form-body">
                         <div class="form-group">
                             <label class="control-label col-md-3">Nombre del proyecto</label>
                             <div class="col-md-9">
                                 <div class="input-icon right">
-                                    <input type="text" class="form-control" name="proyectname" id="proyectname" ng-model="proyecto.nombre"> </div>
-                                <div class="help-block"> Ingresar nombre del proyecto (E.j: Osos) </div>
+                                    <input type="text" class="form-control" name="proyectname" id="proyectname" ng-model="proyecto.nombre" placeholder="Ingresar nombre del proyecto (E.j: Osos)" required="required"> </div>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" >
                             <label class="control-label col-md-3">Materia(s)</label>
                             <div class="col-md-9">
                                 <div class="input-icon right">
-                                    <input type="text" class="form-control" name="materia" id="materia" ng-model="proyecto.materia"> </div>
-                                <div class="help-block"> Ingresar nombre de la(s) materias (E.j: COMCOM, ATI, etc...) </div>
+                                    <div ng-repeat="materia in proyecto.materias" required="required">
+                                    <label>
+                                        <input type="checkbox" required="required" ng-model="materia.isCheck"/> 
+                                        {{materia.name}}
+                                        </label>
+                                    </div> 
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -57,7 +61,7 @@
                                         <span class="input-group-addon btn default btn-file">
                                             <span class="fileinput-new"> Seleccionar </span>
                                             <span class="fileinput-exists"> Cambiar </span>
-                                            <input type="file" name="..."> </span>
+                                            <input type="file" required="required" name="..."> </span>
                                         <a href="#" class="input-group-addon btn red fileinput-exists" data-dismiss="fileinput"> Quitar </a>
                                     </div>
                                     <div class="help-block"> Subir un archivo comprimido(.zip), en caso de tener más de un documento. </div>
@@ -65,9 +69,10 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-3">Descripción</label>
+                            <label class="control-label col-md-3">Categoría</label>
                             <div class="col-md-9">
-                                <textarea id="maxlength_textarea" class="form-control" maxlength="800" rows="5" placeholder="Realizar una descripción general del proyecto. Límite de 800 letras"ng-model="proyecto.descripcion"></textarea>
+                                <select name="singleSelect" id="singleSelect" class="form-control" ng-model="proyecto.categorias.default">
+                                <option required="required" ng-repeat="cat in proyecto.categorias.cats" value="{{cat.id}}">{{cat.name}}</option></select>
                             </div>
                         </div>
                         <div class="form-group last">
@@ -135,7 +140,7 @@
                                                 <span class="input-group-addon">
                                                     <i class="fa fa-user"></i>
                                                 </span>
-                                                <input type="text" id="typeahead_example_modal_2" name="typeahead_example_modal_2" class="form-control" ng-model="integrantes.nombre"/> 
+                                                <input type="text" id="typeahead_example_modal_2"required="required"  name="typeahead_example_modal_2" class="form-control" ng-model="integrantes.nombre"/> 
                                             </div>
                                         </div>
                                     </div>
@@ -146,7 +151,7 @@
                                                 <span class="input-group-addon">
                                                     <i class="fa fa-envelope"></i>
                                                 </span>
-                                                <input type="text" id="typeahead_example_modal_3" name="typeahead_example_modal_3" class="form-control" ng-model="integrantes.correo"/> </div>
+                                                <input type="text" id="typeahead_example_modal_3" name="typeahead_example_modal_3" class="form-control" required="required" ng-model="integrantes.correo"/> </div>
                                         </div>
                                     </div>
                                     <div class="form-group last">
@@ -156,7 +161,7 @@
                                                 <span class="input-group-addon">
                                                     <i class="fa fa-phone"></i>
                                                 </span>
-                                                <input type="text" id="typeahead_example_modal_4" name="typeahead_example_modal_4" class="form-control" ng-model="integrantes.telefono"/> 
+                                                <input type="text" id="typeahead_example_modal_4" required="required" name="typeahead_example_modal_4" class="form-control" ng-model="integrantes.telefono"/> 
                                             </div>
                                         </div>
                                     </div>
