@@ -4,12 +4,18 @@ Metronic AngularJS App Main Script
 
 /* Metronic App */
 var MetronicApp = angular.module("MetronicApp", [
-    "ui.router", 
+    "ui.router",
+    "ngAnimate" ,
+    "toaster",
     "ui.bootstrap", 
     "oc.lazyLoad",  
     "ngSanitize",
     "ngRoute",
-    "templates"
+    "templates",
+    "its.auth",
+    "its.listado",
+    "its.proyectos",
+    "its.usuarios"
 ]); 
 
 /* Configure ocLazyLoader(refer: https://github.com/ocombe/ocLazyLoad) */
@@ -199,8 +205,4 @@ MetronicApp.run(["$rootScope", "$stateParams", "$templateCache","settings", "$st
     $rootScope.baseUrl = 'http://itsubscriber.herokuapp.com:80'; 
 }]);
 
-var myApp = angular.module('its', ["MetronicApp",
-    "its.auth",
-    "its.listado",
-    "its.proyectos",
-    "its.usuarios"]);
+var myApp = angular.module('its', ["MetronicApp"]);
