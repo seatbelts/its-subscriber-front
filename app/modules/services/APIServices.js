@@ -83,8 +83,6 @@
                 .catch(response);
         }
 
-<<<<<<< HEAD
-=======
         function register(credentials) {
             return $http({
                 method: 'POST',
@@ -98,7 +96,6 @@
             .catch(response);
         }
 
->>>>>>> Signup y oculta links dependiendo del rol
         /*
          * Create Services
          */
