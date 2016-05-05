@@ -1,4 +1,5 @@
 <!-- BEGIN PAGE HEADER-->
+
 <h3 class="page-title"> Proyectos </h3>
 <div class="page-bar">
     <ul class="page-breadcrumb">
@@ -27,23 +28,25 @@
             </div>
             <div class="portlet-body form">
                 <!-- BEGIN FORM-->
-                <form id="form-username" class="form-horizontal form-bordered" ng-submit="ipc.inscribir()" novalidate="">
+                <form name="proyForm" class="form-horizontal form-bordered" ng-submit="ipc.inscribir()" novalidate="">
+
                     <div class="form-body">
                         <div class="form-group">
                             <label class="control-label col-md-3">Nombre del proyecto</label>
                             <div class="col-md-9">
                                 <div class="input-icon right">
-                                    <input type="text" class="form-control" name="proyectname" id="proyectname" ng-model="ipc.project.nombre" placeholder="Ingresar nombre del proyecto (E.j: Osos)" required="required"> </div>
+                                    <input type="text" class="form-control" name="proyectname" id="proyectname" ng-model="ipc.project.nombre" required="required"/> 
+                                    <p ng-show="proyForm.proyectname.$invalid && !proyForm.proyect.$pristine" class="help-block">Ingresar nombre de proyecto</p>  
                             </div>
                         </div>
+                        </div>
+
                         <div class="form-group">
                             <label class="control-label col-md-3">Materia(s)</label>
                             <div class="col-md-9">
                                 <div class="input-icon right">
-                                    <div ng-repeat="materia in ipc.materias" required="required">
-                                        <label>
-                                            <input type="checkbox" ng-model="materia.isChecked" ng-change="ipc.checkSubjects(materia)" required="required" /> {{materia.nombre}}
-                                        </label>
+                                    <div ng-repeat="materia in ipc.materias"> 
+                                            <input type="checkbox" ng-model="materia.isChecked" ng-change="ipc.checkSubjects(materia)"/> {{materia.nombre}}
                                     </div>
                                 </div>
                             </div>
@@ -71,7 +74,7 @@
                         <div class="form-group">
                             <label class="control-label col-md-3">Categoría</label>
                             <div class="col-md-9">
-                                <select class="form-control" ng-options="cat as cat.nombre for cat in ipc.categorias" ng-model="ipc.project.categoria" ></select>
+                                <select class="form-control" ng-options="cat as cat.nombre for cat in ipc.categorias" ng-model="ipc.project.categoria" required="required"></select>
                             </div>
                         </div>
                         <div class="form-group">
@@ -137,7 +140,8 @@
                     <div class="form-actions">
                         <div class="row">
                             <div class="col-md-offset-3 col-md-9">
-                                <button type="submit" class="btn green">
+                                <button type="submit" class="btn green" 
+                                ng-disabled="proyForm.$invalid || ipc.project.materia == 0">
                                     <i class="fa fa-check"></i> Guardar</button>
                                 <button type="button" class="btn default">Cancelar</button>
                             </div>

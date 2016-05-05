@@ -80,40 +80,6 @@ angular.module('its.proyectos')
 
         activate();
 
-        // TODO Revisar de nuevo las validaciones
-        var validarProyecto = function(testObject) {
-            var k, l, s, v;
-            s = Object.keys(testObject).length;
-            l = 0;
-            for (k in testObject) {
-                v = testObject[k];
-                l++;
-                if (!v || v === '') {
-                    switch (k) {
-                        case 'nombre':
-                            toaster.pop('error', 'Falta poner la matricula');
-                            console.log(k);
-                            return false;
-                        case 'categorias':
-                            toaster.pop('error', 'Falta poner la contrasena');
-                            console.log(k);
-                            return false;
-                        case 'materias':
-                            toaster.pop('error', 'Falta seleccionar material');
-                            console.log(k);
-                            return false;
-                        case 'categorias':
-                            toaster.pop('error', 'Falta seleccionar categoria');
-                            console.log(k);
-                            return false;
-                    }
-                } else if (l === s) {
-                    return true;
-                }
-
-            }
-        }
-
         ipc.inscribir = function() {
 
             // TODO Validar magicamente 

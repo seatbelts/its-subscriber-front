@@ -264,14 +264,16 @@ MetronicApp.factory('httpRequestInterceptor', function($localStorage, $location,
                 'Content-Type': 'application/x-www-form-urlencoded',
                 'Accept': 'application/x-www-form-urlencoded'
             };
-        } else {
+        } 
+
+        else {
             // config.headers = {
             //     'Content-Type': 'application/json',
             //     'Accept': 'application/json'
             // };
-            if ($localStorage.user.token !== undefined) {
-                config.headers.Authorization = 'Token ' + $localStorage.user.token;
-            }
+                if ($localStorage.user.token !== undefined) {
+                    config.headers.Authorization = 'Token ' + $localStorage.user.token;
+                }
         }
 
         return config;
