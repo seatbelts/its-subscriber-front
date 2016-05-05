@@ -6,8 +6,7 @@
 			views: {
 				'contentView': {
 					templateUrl: 'modules/materias/views/materias.html',
-					controller: 'MateriasController',
-					controllerAs: 'mc'
+					controller: 'MateriasController'
 				}
 			}
 		});
