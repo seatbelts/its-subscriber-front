@@ -48,11 +48,64 @@
                 .catch(response);
         }
 
-        function getMaterias() {
-            return $http.get(endpoints.materias)
+
+        Events
+        Projects
+        Teams
+        Students
+        Subject
+        Teachers
+
+        eventos
+        proyectos
+        equipos
+        alumnos
+        materias
+        maestros
+
+        /*
+         * Create Services
+         */
+
+        function createEvents(data) {
+            return $http.post(endpoints.eventos, data)
                 .then(response)
                 .catch(response);
         }
+
+        function createProjects(data) {
+            return $http.post(endpoints.proyectos, data)
+                .then(response)
+                .catch(response);
+        }
+
+        function createTeams(data) {
+            return $http.post(endpoints.equipos, data)
+                .then(response)
+                .catch(response);
+        }
+
+        function createStudents(data) {
+            return $http.post(endpoints.alumnos, data)
+                .then(response)
+                .catch(response);
+        }
+
+        function createSubject(data) {
+            return $http.post(endpoints.materias, data)
+                .then(response)
+                .catch(response);
+        }
+
+        function createTeachers(data) {
+            return $http.post(endpoints.maestros, data)
+                .then(response)
+                .catch(response);
+        }
+
+        /*
+         * Read Services
+         */
 
         function getEvents() {
             return $http.get(endpoints.eventos)
@@ -86,6 +139,86 @@
 
         function getTeachers() {
             return $http.get(endpoints.maestros)
+                .then(response)
+                .catch(response);
+        }
+
+        /*
+         * Update Services
+         */
+
+        function updateEvents(url, obj) {
+            return $http.put(url, obj)
+                .then(response)
+                .catch(response);
+        }
+
+        function updateProjects(url, obj) {
+            return $http.put(url, obj)
+                .then(response)
+                .catch(response);
+        }
+
+        function updateTeams(url, obj) {
+            return $http.put(url, obj)
+                .then(response)
+                .catch(response);
+        }
+
+        function updateStudents(url, obj) {
+            return $http.put(url, obj)
+                .then(response)
+                .catch(response);
+        }
+
+        function updateSubject(url, obj) {
+            return $http.put(url, obj)
+                .then(response)
+                .catch(response);
+        }
+
+        function updateTeachers(url, obj) {
+            return $http.put(url, obj)
+                .then(response)
+                .catch(response);
+        }
+
+        /*
+         * Delete Services
+         */
+
+        function deleteEvents(url) {
+            return $http.delete(url)
+                .then(response)
+                .catch(response);
+        }
+
+        function deleteProjects(url) {
+            return $http.delete(url)
+                .then(response)
+                .catch(response);
+        }
+
+        function deleteTeams(url) {
+            return $http.delet(url)
+                .then(response)
+                .catch(response);
+        }
+
+        function deleteStudents(url) {
+            return $http.delete(url)
+                .then(response)
+                .catch(response);
+        }
+
+        function deleteSubject(url) {
+            return $http.delete(url)
+                .then(response)
+                .catch(response);
+        }
+
+        function deleteTeachers(url) {
+            return $http.delete(url)
                 .then(response)
                 .catch(response);
         }
