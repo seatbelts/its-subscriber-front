@@ -153,8 +153,6 @@ MetronicApp.controller('SidebarController', ['$scope', '$state', '$localStorage'
         $state.go('app.listado');
     };
 
-    console.log($localStorage.user);
-
     checkSession();
 
 }]);

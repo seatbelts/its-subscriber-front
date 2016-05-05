@@ -1,5 +1,6 @@
 angular.module('its.proyectos')
-    .controller('InscribirController', ['$state', 'APIServices', 'toaster', function($state, APIServices, toaster) {
+    .controller('InscribirController', ['$state', 'APIServices', 'toaster', '$localStorage', 
+        function($state, APIServices, toaster, $localStorage) {
 
         var ipc = this;
         // Arreglos con promises de los servicios
@@ -19,8 +20,17 @@ angular.module('its.proyectos')
             // archivo: '',
             // evento: 1, //Default evento 1
             categoria: '',
-            materia: []
-            // integrantes: []
+            materia: [],
+            integrantes: []
+        };
+
+        ipc.team = {};
+        ipc.team = {
+            nombre: '',
+            usuario: APIServices.getUrl() + '/v1/usuarios/'+ $localStorage.user.id + '/',
+            proyecto: '',
+            lider: APIServices.getUrl() + '/v1/alumnos/'+ $localStorage.user.id + '/',
+            integrantes: []
         };
 
         ipc.checkSubjects = function(e) {
@@ -62,6 +72,9 @@ angular.module('its.proyectos')
             APIServices.getStudents()
                 .then(function(res) {
                     ipc.alumnos = res.data;
+                    ipc.alumnos.forEach( function(element, index) {
+                        element.fullName = element.nombre + ' ' + element.apellidos;
+                    }); 
                 });
         }
 
@@ -126,6 +139,24 @@ angular.module('its.proyectos')
 
             APIServices.createProjects(data)
             	.then(function(res){
+                    var project = res.data;
+                    var data = {
+                        nombre: ipc.team.nombre,
+                        usuario: ipc.team.usuario,
+                        proyecto: res.data.url,
+                        lider: ipc.team.lider,
+                        integrantes: []
+                    };
+
+                    ipc.project.integrantes.forEach( function(element, index) {
+                        data.integrantes.push(element.url);
+                    });
+
+                    APIServices.createTeams(data)
+                        .then(function(res){
+                            console.log('createTeams', res);
+                        })
+
                 	toaster.pop('success', 'Proyecto creado');
             	})
             	.catch(function (error) {

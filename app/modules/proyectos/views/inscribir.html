@@ -74,19 +74,25 @@
                                 <select class="form-control" ng-options="cat as cat.nombre for cat in ipc.categorias" ng-model="ipc.project.categoria" ></select>
                             </div>
                         </div>
-<!--                         <div class="form-group">
+                        <div class="form-group">
                             <label class="control-label col-md-3">Integrantes</label>
                             <div class="col-md-9">
-                                <select class="form-control" ng-options="student as student.nombre for student in ipc.alumnos" ng-model="ipc.integrante" 
+                                <select class="form-control" ng-options="student as student.fullName for student in ipc.alumnos" ng-model="ipc.integrante" 
                                     ng-change="ipc.addStudent(ipc.integrante)"></select>
                             </div>
-                        </div> -->
-<!--                         <div class="form-group last">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Equipo</label>
+                            <div class="col-md-9">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" name="proyectname" id="proyectname" ng-model="ipc.team.nombre" placeholder="Ingrese el nombre de su equipo" required="required"> 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group last">
                             <label class="control-label col-md-3">Integrantes del equipo</label>
                             <div>
-                                ***BEGIN SEARCH BOX ****
-                                ***DOC: Apply "search-form-expanded" right after the "search-form" class to have half expanded search box***
-                                <form class="search-form search-form-expanded" action="#" method="GET">
+<!--                                 <form class="search-form search-form-expanded" action="#" method="GET">
                                     <div class="input-group">
                                         <input type="text" class="form-control" placeholder="Search..." name="query">
                                         <span class="input-group-btn">
@@ -95,8 +101,7 @@
                                         </a>
                                         </span>
                                     </div>
-                                </form>
-                                *** END HEADER SEARCH BOX***
+                                </form> -->
                                 <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_2">
                                     <thead>
                                         <tr>
@@ -110,7 +115,7 @@
                                     <tbody ng-repeat="integrante in ipc.project.integrantes">
                                         <tr class="odd gradeX">
                                             <td> {{integrante.matricula}} </td>
-                                            <td> {{integrante.nombre}} </td>
+                                            <td> {{integrante.nombre}} {{integrante.apellidos}}</td>
                                             <td>
                                                 <a href="mailto:{{integrante.correo}}"> {{integrante.correo}} </a>
                                             </td>
@@ -123,12 +128,12 @@
                                     </tbody>
                                 </table>
                             </div>
-                            TODO No se pueden agregar integrantes en esta parte sino estan inscritos
+                            <!-- TODO No se pueden agregar integrantes en esta parte sino estan inscritos -->
                             <div class="col-md-4">
                                 <a data-target="#myModal_autocomplete" role="button" class="btn red" data-toggle="modal"> Integrantes </a>
                             </div>
                         </div>
- -->                    </div>
+                    </div>
                     <div class="form-actions">
                         <div class="row">
                             <div class="col-md-offset-3 col-md-9">
@@ -140,7 +145,7 @@
                     </div>
                 </form>
                 <!-- END FORM-->
-<!--                 <div id="myModal_autocomplete" class="modal fade" role="dialog" aria-hidden="true">
+                <div id="myModal_autocomplete" class="modal fade" role="dialog" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -212,7 +217,7 @@
                             </div>
                         </div>
                     </div>
-                </div> -->
+                </div>
             </div>
         </div>
         <!-- END PORTLET-->

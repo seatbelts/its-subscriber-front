@@ -12,7 +12,7 @@
 			}
 		})
 		.state('app.inscribir', {
-			url: '/inscribir',
+			url: '/proyectos/inscribir',
 			views: {
 				'contentView': {
 					templateUrl: 'modules/proyectos/views/inscribir.html',
