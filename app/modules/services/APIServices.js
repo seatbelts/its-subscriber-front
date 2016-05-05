@@ -1,65 +1,94 @@
-(function () {
-	'use strict';
-	
-	return angular
-		.module('API', [])
-		.factory('APIServices', APIServices);
+(function() {
+    'use strict';
 
-		APIServices.$inject = ['$http'];
+    return angular
+        .module('API', [])
+        .factory('APIServices', APIServices);
 
-		function APIServices($http) {
-			
-    		// var url = 'http://localhost:8001'; 
-			var url = 'http://itsubscriber.herokuapp.com:80';
-			var endpoints = {};
-			endpoints = {
-				login:     url + '/login/',
-				eventos:   url + '/v1/eventos/',
-				proyectos: url + '/v1/proyectos/',
-				equipos:   url + '/v1/equipos/',
-				alumnos:   url + '/v1/alumnos/',
-				usuarios:  url + '/v1/usuarios/',
-				materias:  url + '/v1/materias/',
-				maestros:  url + '/v1/maestros/'
-			};
+    APIServices.$inject = ['$http'];
 
-			var services = {
-				login: login,
-				getMaterias: getMaterias
-			};
+    function APIServices($http) {
 
-			return services;
+        // var url = 'http://localhost:8001';
+        var url = 'http://itsubscriber.herokuapp.com:80';
+        var endpoints = {};
+        endpoints = {
+            login: url + '/login/',
+            eventos: url + '/v1/eventos/',
+            proyectos: url + '/v1/proyectos/',
+            equipos: url + '/v1/equipos/',
+            alumnos: url + '/v1/alumnos/',
+            usuarios: url + '/v1/usuarios/',
+            materias: url + '/v1/materias/',
+            maestros: url + '/v1/maestros/'
+        };
 
-			// Private functions
+        var services = {
+            login: login,
+            getMaterias: getMaterias
+        };
 
-			function login(credentials) {
-				return $http({
-					method: 'POST',
-				    url: endpoints.login,
-				    data: $.param(credentials),
-				    headers: {
-				      'Content-Type': 'application/x-www-form-urlencoded'
-				    }
-				})
-				.then(function (res) {
-					return res;
-				})
-				.catch(function (error) {
-					return error;
-				});
-			}
+        return services;
 
-			function getMaterias() {
-				return $http.get(endpoints.materias)
-					.then(function (res) {
-						return res;
-					})
-					.catch(function (error) {
-						return error;
-					});
-			}
+        // Private functions
+        function response(res) {
+            return res;
+        }
 
+        function login(credentials) {
+            return $http({
+                    method: 'POST',
+                    url: endpoints.login,
+                    data: $.param(credentials),
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    }
+                })
+                .then(response)
+                .catch(response);
+        }
 
-		}
+        function getMaterias() {
+            return $http.get(endpoints.materias)
+                .then(response)
+                .catch(response);
+        }
+
+        function getEvents() {
+            return $http.get(endpoints.eventos)
+                .then(response)
+                .catch(response);
+        }
+
+        function getProjects() {
+            return $http.get(endpoints.proyectos)
+                .then(response)
+                .catch(response);
+        }
+
+        function getTeams() {
+            return $http.get(endpoints.equipos)
+                .then(response)
+                .catch(response);
+        }
+
+        function getStudents() {
+            return $http.get(endpoints.alumnos)
+                .then(response)
+                .catch(response);
+        }
+
+        function getSubject() {
+            return $http.get(endpoints.materias)
+                .then(response)
+                .catch(response);
+        }
+
+        function getTeachers() {
+            return $http.get(endpoints.maestros)
+                .then(response)
+                .catch(response);
+        }
+    }
 
 })();

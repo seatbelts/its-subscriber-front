@@ -3,6 +3,8 @@ angular.module('its.auth')
 	.controller('LoginController', ['$scope', '$state', '$rootScope', 'APIServices', 'toaster', '$localStorage',
 		function($scope, $state, $rootScope, APIServices, toaster, $localStorage){
 		
+		$localStorage.user = {};
+
 		$scope.model = {};
 		$scope.model.username = null;
 		$scope.model.password = null;
