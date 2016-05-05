@@ -1,58 +1,84 @@
 angular.module('its.proyectos')
-    .controller('InscribirController', ['$scope', '$state', 'APIServices', function($scope, $state, APIServices) {
+    .controller('InscribirController', ['$state', 'APIServices', 'toaster', function($state, APIServices, toaster) {
 
     	var ipc = this; 
     	ipc.materias = [];
     	ipc.categorias = [];
+    	// integrantes del equipo
+    	ipc.proyecto = {};
+        ipc.proyecto.integrantes = [];
+        // TODO Agregar un searchbox o algo para cargar estos
+		ipc.alumnos = [];
 
-        $scope.proyecto = {};
-        $scope.proyecto.integrantes = []
-        $scope.integrantes = {}
-        $scope.proyecto.nombre = null;
-
-
-        $scope.proyecto.materias = [
-            { name: 'Dispositivos Moviles', isCheck: false },
-            { name: 'Computo Integrado', isCheck: false },
-            { name: 'Circuitos', isCheck: false }
-        ];
-
-        $scope.proyecto.categorias = {
-            default: null,
-            cats: [
-                { name: "Aplicacion Movil", id: 1 },
-                { name: "Software", id: 2 }
-            ],
-        };
-
-        $scope.integrantes.matricula = null;
-        $scope.integrantes.correo = null;
-        $scope.integrantes.telefono = null;
+		// Variable temporal para agregar al arreglo de alumnos del equipo
+        ipc.integrante = {};
 
 
-        $scope.nuevoIntegrante = function() {
-            console.log($scope.integrantes);
-            $scope.proyecto.integrantes.push($scope.integrantes);
-            console.log($scope.proyecto.integrantes);
-            $scope.integrantes = {};
-        };
+		// Project model
+		ipc.project = {};
+		ipc.project = {
+			nombre: '',
+			description: '', //Remove after
+			materia: [],
+			mesa : '', //Remove after
+			// archivo: '',
+			evento: 1, //Default evento 1
+			categoria: ''
+		};
+
+		ipc.checkSubjects = function (e) {
+			if (e.isChecked) {
+				ipc.project.materia.push(e);
+			} else {
+				var pos = ipc.project.materia.indexOf(e);
+				ipc.project.materia.splice(pos, 1);
+			}
+		}
+
+		ipc.addStudent = function (student) {
+			var pos = ipc.proyecto.integrantes.indexOf(student);
+			if (pos > -1) {
+            	toaster.pop('warning', 'Ya ha sido agregado este estudiante');
+			} else {
+				ipc.proyecto.integrantes.push(student);
+            	toaster.pop('success', 'Estudiante agregado');
+			}
+		};
+
+		ipc.removeStudent = function (student) {
+            toaster.pop('warning', 'Estudiante eliminado');
+			var pos = ipc.proyecto.integrantes.indexOf(student);
+			ipc.proyecto.integrantes.splice(pos, 1);
+		}
+
+// nombre = models.CharField(max_length=30)
+// description = models.TextField(blank=True, null=True)
+// materia = models.ManyToManyField(Materia)
+// evento = models.ForeignKey(Evento, on_delete=models.CASCADE)
+// mesa = models.CharField(max_length=3, null=True)
+// archivo = models.FileField(null=True, upload_to=file_name)
+// categoria = models.ForeignKey(Categorias, on_delete=models.CASCADE, null=True)
 
 		function activate () {
 		 	APIServices.getSubject()
 		 		.then(function(res){
 		 			ipc.materias = res.data;
-		 		})
+		 		});
 
 		 	APIServices.getCategories()
 		 		.then(function(res){
 		 			ipc.categorias = res.data;
-		 			console.log('getCategories', res.data)
-		 		})
+		 		});
+
+		 	APIServices.getStudents()
+		 		.then(function(res){
+		 			ipc.alumnos = res.data;
+		 		});
 		}
 
 		activate();
 
-
+		// TODO Revisar de nuevo las validaciones
         var validarProyecto = function(testObject) {
             var k, l, s, v;
             s = Object.keys(testObject).length;
@@ -86,9 +112,9 @@ angular.module('its.proyectos')
             }
         }
 
-        $scope.inscribir = function() {
-            $scope.validarProy = $scope.proyecto;
-            if (validarProyecto($scope.validarProy)) {
+        ipc.inscribir = function() {
+            ipc.validarProy = ipc.proyecto;
+            if (validarProyecto(ipc.validarProy)) {
                 toaster.pop('success', 'Proyecto Creado');
             }
         };

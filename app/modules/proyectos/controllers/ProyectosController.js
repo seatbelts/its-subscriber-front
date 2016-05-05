@@ -17,10 +17,9 @@
 
 		// TODO Agregar otra vista para ver la informacion del proyecto
 
-
 		pc.proyecto = {};
-	    pc.proyecto.integrantes = []
-	    pc.integrantes = {}
+	    pc.proyecto.integrantes = [];
+	    pc.integrantes = {};
 
 	    pc.nuevoIntegrante = function() {
 			console.log(pc.integrantes);
