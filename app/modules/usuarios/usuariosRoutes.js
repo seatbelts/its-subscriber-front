@@ -6,7 +6,8 @@
 			views: {
 				'contentView': {
 					templateUrl: 'modules/usuarios/views/perfil.html',
-					controller: 'UsuarioController'
+					controller: 'UsuarioController',
+					controllerAs: 'uc'
 				}
 			}
 		});

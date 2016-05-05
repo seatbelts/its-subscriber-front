@@ -6,7 +6,8 @@
 			views: {
 				'contentView': {
 					templateUrl: 'modules/proyectos/views/proyectos.html',
-					controller: 'ProyectosController'
+					controller: 'ProyectosController',
+					controllerAs: 'pc'
 				}
 			}
 		})
@@ -15,7 +16,8 @@
 			views: {
 				'contentView': {
 					templateUrl: 'modules/proyectos/views/inscribir.html',
-					controller: 'InscribirController'
+					controller: 'InscribirController',
+					controllerAs: 'ipc'
 				}
 			}
 		});

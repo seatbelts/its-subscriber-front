@@ -40,16 +40,17 @@
                             <label class="control-label col-md-3">Materia(s)</label>
                             <div class="col-md-9">
                                 <div class="input-icon right">
-                                    <div ng-repeat="materia in proyecto.materias" required="required">
-                                    <label>
-                                        <input type="checkbox" required="required" ng-model="materia.isCheck"/> 
-                                        {{materia.name}}
+                                    <div ng-repeat="materia in ipc.materias" required="required">
+                                        <label>
+                                            <input type="checkbox" required="required"/> 
+                                            {{materia.nombre}}
                                         </label>
                                     </div> 
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <!-- TODO remove or implement file uploader -->
+<!--                         <div class="form-group">
                             <label class="control-label col-md-3">Documento(s)</label>
                             <div class="col-md-9">
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
@@ -67,12 +68,12 @@
                                     <div class="help-block"> Subir un archivo comprimido(.zip), en caso de tener más de un documento. </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="form-group">
                             <label class="control-label col-md-3">Categoría</label>
                             <div class="col-md-9">
                                 <select name="singleSelect" id="singleSelect" class="form-control" ng-model="proyecto.categorias.default">
-                                <option required="required" ng-repeat="cat in proyecto.categorias.cats" value="{{cat.id}}">{{cat.name}}</option></select>
+                                <option required="required" ng-repeat="cat in ipc.categorias" value="{{cat.id}}">{{cat.name}}</option></select>
                             </div>
                         </div>
                         <div class="form-group last">

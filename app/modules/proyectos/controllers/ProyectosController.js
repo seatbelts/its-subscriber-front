@@ -1,16 +1,32 @@
 (function() {
 	var ProyectosController;
-	ProyectosController = function($scope, $state, $rootScope) {
+	ProyectosController = function(APIServices) {
 
-		$scope.proyecto = {};
-	    $scope.proyecto.integrantes = []
-	    $scope.integrantes = {}
+		var pc = this;
+		pc.projects = [];
 
-	    $scope.nuevoIntegrante = function() {
-			console.log($scope.integrantes);
-			$scope.proyecto.integrantes.push($scope.integrantes);
-			console.log($scope.proyecto.integrantes);
-			$scope.integrantes = {};
+		function activate () {
+		 	APIServices.getProjects()
+		 		.then(function(res){
+		 			console.log('pc.projects', res)
+		 			pc.projects = res.data;
+		 		})
+		}
+
+		activate();
+
+		// TODO Agregar otra vista para ver la informacion del proyecto
+
+
+		pc.proyecto = {};
+	    pc.proyecto.integrantes = []
+	    pc.integrantes = {}
+
+	    pc.nuevoIntegrante = function() {
+			console.log(pc.integrantes);
+			pc.proyecto.integrantes.push(pc.integrantes);
+			console.log(pc.proyecto.integrantes);
+			pc.integrantes = {};
 		};
 
 	};
