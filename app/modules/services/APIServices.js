@@ -24,7 +24,8 @@
 			};
 
 			var services = {
-				login: login
+				login: login,
+				getMaterias: getMaterias
 			};
 
 			return services;
@@ -47,6 +48,18 @@
 					return error;
 				});
 			}
+
+			function getMaterias() {
+				return $http.get(endpoints.materias)
+					.then(function (res) {
+						return res;
+					})
+					.catch(function (error) {
+						return error;
+					});
+			}
+
+
 		}
 
 })();
