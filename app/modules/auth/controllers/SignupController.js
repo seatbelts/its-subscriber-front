@@ -1,7 +1,6 @@
 angular.module('its.auth')
 	.controller('SignupController', ['$scope', '$state', '$rootScope', '$localStorage', 'toaster', 'APIServices', function($scope, $state, $rootScope, $localStorage, toaster, APIServices){
 		
-		console.log('ayyy')
 		$scope.model = {};
 		$scope.model.username = null;
 		$scope.model.first_name = null;
@@ -21,36 +20,37 @@ angular.module('its.auth')
 				if (!v || v === '') {
 					switch(k) {
 						case 'username':
-							toaster.pop('error', 'Falta poner la matricula');
+							toaster.pop('error', 'Información Faltante', 'Ingresar Matrícula');
 							console.log(k);
 							return false;
 						case 'first_name':
-							toaster.pop('error', 'Falta poner el primer nombre');
+							toaster.pop('error', 'Información Faltante', 'Ingresar Nombre(s)');
 							console.log(k);
 							return false;
 						case 'last_name':
-							toaster.pop('error', 'Falta poner los apellidos');
+							toaster.pop('error', 'Información Faltante', 'Ingresar Apellidos');
 							console.log(k);
 							return false;
+
 						case 'email':
-							toaster.pop('error', 'Falta poner el correo');
+							toaster.pop('error', 'Información Faltante', 'Ingresar correo');
 							console.log(k);
 							return false;
 						case 'telefono':
-							toaster.pop('error', 'Falta el telefono');
+							toaster.pop('error', 'Información Faltante', 'Ingresar Teléfono');
 							return false;
 						case 'password':
-							toaster.pop('error', 'Falta poner la contrasena');
+							toaster.pop('error', 'Información Faltante', 'Ingresar Contraseña');
 							console.log(k);
 							return false;
 						case 'passwordRepeat':
-							toaster.pop('error', 'Se debe repetir la contrasena');
+							toaster.pop('error', 'Información Faltante', 'Repetir contraseña');
 							console.log(k);
 							return false;
 					}
 				} else if (l === s) {
 					if (testObject.password != testObject.passwordRepeat) {
-						toaster.pop('error', 'Las contrasenas no coinciden');
+						toaster.pop('error', 'Error de Validación', 'Las contraseñas no coinciden');
 						console.log('las contrasenas no coinciden');
 						return false;
 					}
@@ -81,6 +81,8 @@ angular.module('its.auth')
 							console.log('Unable to log');
 						}
 					})
+				toaster.pop('success', '!Correcto¡', 'Cuenta Creada');
+				$state.go('app.dashboard');
 			}
 		};
 
