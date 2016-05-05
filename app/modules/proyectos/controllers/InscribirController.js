@@ -1,5 +1,5 @@
 angular.module('its.proyectos')
-	.controller('InscribirController', ['$scope', '$state', '$rootScope', function($scope, $state, $rootScope){
+	.controller('InscribirController', ['$scope', '$state', '$rootScope', 'toaster', function($scope, $state, $rootScope, toaster){
 		$scope.proyecto = {};
 	    $scope.proyecto.integrantes = []
 	    $scope.integrantes = {}
@@ -43,7 +43,7 @@ angular.module('its.proyectos')
 				if (!v || v === '') {
 					switch(k) {
 						case 'nombre':
-							toaster.pop('error', 'Falta poner la matricula');
+							toaster.pop('error', 'Falta poner el nombre del proyecto');
 							console.log(k);
 							return false;
 						case 'categorias':
