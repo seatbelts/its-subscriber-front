@@ -1,7 +1,7 @@
 angular.module('its.listado')
-	.controller('ListadoController', ['$scope', '$state', '$rootScope', 'APIServices', function($scope, $state, $rootScope, APIServices){
+	.controller('ListadoController', ['$scope', '$state', 'APIServices', function($scope, $state, APIServices){
 
-		$scope.proyectos = {};
+		$scope.proyectos = [];
 
 		getAllProjects = function() {
 			APIServices.getProjects()

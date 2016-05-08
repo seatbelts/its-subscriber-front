@@ -39,7 +39,7 @@
                         <tbody class="text-center" ng-repeat="proyecto in proyectos">
                             <tr class="odd gradeX">
                                 <td> {{proyecto.nombre}} </td>
-                                <td> {{proyecto.materia}} </td>
+                                <td><div ng-repeat="materia in proyecto.materia">{{materia.nombre}}</div></td>
                                 <td>
                                     <a><button ng-click="viewProject(proyecto.id)" class="btn btn-info"><i class="fa fa-eye"></i></button></a>
                                 </td>
