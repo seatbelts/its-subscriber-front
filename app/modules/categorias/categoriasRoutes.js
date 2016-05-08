@@ -6,7 +6,8 @@
 			views: {
 				'contentView': {
 					templateUrl: 'modules/categorias/views/categorias.html',
-					controller: 'CategoriasController'
+					controller: 'CategoriasController',
+					controllerAs: 'catmv'
 				}
 			}
 		});
