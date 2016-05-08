@@ -39,12 +39,12 @@
                                 <th> Editar </th>
                             </tr>
                         </thead>
-                        <tbody class="text-center" ng-repeat="maestro in maestros">
+                        <tbody class="text-center" ng-repeat="maestro in maemv.maestros">
                             <tr class="odd gradeX">
                                 <td> {{maestro.nombre}} </td>
                                 <td> {{maestro.apellidos}} </td>
                                 <td> {{maestro.correo}} </td>
-                                <td> {{maestro.materia}} </td>
+                                <td> {{maestro.materia.nombre}}</td>
                                 <td>
                                     <a><button class="btn btn-info"><i class="fa fa-eye"></i></button></a>
                                 </td>
