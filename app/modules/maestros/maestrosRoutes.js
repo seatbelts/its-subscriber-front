@@ -19,6 +19,15 @@
 					controller: 'CrearMaestrosController'
 				}
 			}
+		})
+		.state('app.detallemaestro', {
+			url: '/maestros/:id',
+			views: {
+				'contentView': {
+					templateUrl: 'modules/maestros/views/detalle.html',
+					controller: 'DetalleMaestroController'
+				}
+			}
 		});
 	};
 	return angular.module('its.maestros').config(MaestrosRoutes);

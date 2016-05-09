@@ -1,5 +1,6 @@
 angular.module('its.maestros')
-	.controller('MaestrosController', ['$state','APIServices', function($state, APIServices) {
+	.controller('MaestrosController', ['$scope', '$state', '$stateParams', '$rootScope', 'APIServices', function($scope, $state, $stateParams, $rootScope, APIServices) {
+
 		var maemv = this;
 
 		maemv.maestros = [];
@@ -9,8 +10,23 @@ angular.module('its.maestros')
 			maemv.maestros = res.data;
 		})
 
+		activate = function() {
+			APIServices.getTeachers()
+				.then(function(res) {
+					console.log(res.data);
+					$scope.maestros = res.data;
+				});
+		}
+
+		$scope.ver = function(id) {
+			$rootScope.id = id;
+			$state.go('app.detallemaestro', {id: id});
+		}
+
 		maemv.crearMaestro = function() {
 			console.log('test');
 			$state.go('app.crear');
 		};
-	}])
+
+		activate();
+	}]);

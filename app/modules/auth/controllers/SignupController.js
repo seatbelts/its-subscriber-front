@@ -31,7 +31,6 @@ angular.module('its.auth')
 							toaster.pop('error', 'Información Faltante', 'Ingresar Apellidos');
 							console.log(k);
 							return false;
-
 						case 'email':
 							toaster.pop('error', 'Información Faltante', 'Ingresar correo');
 							console.log(k);
@@ -73,8 +72,7 @@ angular.module('its.auth')
 						if (res.status === 201) {
 							// Redirect to dashboard
 							$scope.model = {};
-							console.log('Redirect to dashboard')
-							toaster.pop('success', 'Exito', 'La cuenta se creo con exito');
+							toaster.pop('success', 'Exito', 'La cuenta se creo con exito, ahora inicia sesion');
 							$localStorage.user = res.data;
 						} else {
 							$localStorage.user = {};
@@ -82,8 +80,6 @@ angular.module('its.auth')
 							console.log('Unable to log');
 						}
 					})
-				toaster.pop('success', '!Correcto¡', 'Cuenta Creada');
-				$state.go('app.dashboard');
 			}
 		};
 

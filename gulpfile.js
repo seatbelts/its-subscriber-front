@@ -36,7 +36,7 @@ if (process.argv.length > 2){
 gulp.task('connect', function () {
   connect.server({
     root: './build',
-    port: 8000,
+    port: 8888,
     livereload: true                                                                                                                                                                                                                           
   });
 });
