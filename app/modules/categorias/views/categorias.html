@@ -11,6 +11,9 @@
             <a href="#/app/categorias">Listado de Categorias</a>
         </li>
     </ul>
+    <div class="margiv-top-10 pull-right">
+        <a ng-click="crearCategoria()" class="btn green-haze"> Nueva Categoria </a>
+    </div>
 </div>
 <div class="row" nv-file-drop="" uploader="uploader" filters="queueLimit, customFilter">
     <div class="col-md-12">
@@ -29,13 +32,14 @@
                         <thead>
                             <tr class="text-center">
                                 <th> Nombre </th>
+                                <th> Ver </th>
                             </tr>
                         </thead>
                         <tbody class="text-center" ng-repeat="cat in catmv.categorias">
                             <tr class="odd gradeX">
                                 <td> {{cat.nombre}} </td>
                                 <td>
-                                    <a><button class="btn btn-info"><i class="fa fa-eye"></i></button></a>
+                                    <a><button class="btn btn-info" ng-click="verCategoria(cat.id)"><i class="fa fa-eye"></i></button></a>
                                 </td>
                             </tr>
                         </tbody>

@@ -43,9 +43,11 @@
 			getTeams: getTeams,
 			getStudents: getStudents,
 			getSubject: getSubject,
+            getOneSubject: getOneSubject,
 			getTeachers: getTeachers,
             getOneTeacher: getOneTeacher,
             getCategories: getCategories,
+            getOneCategory: getOneCategory,
 			// Update
 			updateEvents: updateEvents,
 			updateProjects: updateProjects,
@@ -186,6 +188,13 @@
                 .catch(response);
         }
 
+        function getOneSubject(id) {
+            url = endpoints.materias + '' + id + '/';
+            return $http.get(url)
+                .then(response)
+                .catch(response);
+        }
+
         function getTeachers() {
             return $http.get(endpoints.maestros)
                 .then(response)
@@ -201,6 +210,13 @@
 
         function getCategories() {
             return $http.get(endpoints.categorias)
+                .then(response)
+                .catch(response);
+        }
+
+        function getOneCategory(id) {
+            url = endpoints.categorias + '' + id + '/';
+            return $http.get(url)
                 .then(response)
                 .catch(response);
         }

@@ -111,7 +111,7 @@ MetronicApp.controller('AppController', ['$scope', '$rootScope', function($scope
 
 
 MetronicApp.controller('DashboardController', ['$scope', 'APIServices', function($scope, APIServices) {
-    console.log('DashboardController')
+    
 }]);
 
 

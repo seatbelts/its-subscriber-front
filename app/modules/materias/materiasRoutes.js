@@ -10,6 +10,24 @@
 					controllerAs: 'matc'
 				}
 			}
+		})
+		.state('app.crearmateria', {
+			url: '/materias/crear',
+			views: {
+				'contentView': {
+					templateUrl: 'modules/materias/views/crear.html',
+					controller: 'CrearMateriaController'
+				}
+			}
+		})
+		.state('app.vermateria', {
+			url: '/materia/:id',
+			views: {
+				'contentView': {
+					templateUrl: 'modules/materias/views/ver.html',
+					controller: 'VerMateriaController'
+				}
+			}
 		});
 	};
 	return angular.module('its.materias').config(MateriasRoutes);

@@ -11,6 +11,9 @@
             <a href="#/app/materias">Listado de Materias</a>
         </li>
     </ul>
+    <div class="margiv-top-10 pull-right">
+        <a ng-click="crearMateria()" class="btn green-haze"> Nueva Materia </a>
+    </div>
 </div>
 <div class="row" nv-file-drop="" uploader="uploader" filters="queueLimit, customFilter">
     <div class="col-md-12">
@@ -29,13 +32,14 @@
                         <thead>
                             <tr class="text-center">
                                 <th> Nombre </th>
+                                <th> Ver </th>
                             </tr>
                         </thead>
                         <tbody class="text-center" ng-repeat="materia in matc.materias">
                             <tr class="odd gradeX">
                                 <td> {{materia.nombre}} </td>
                                 <td>
-                                    <a><button class="btn btn-info"><i class="fa fa-eye"></i></button></a>
+                                    <a><button class="btn btn-info" ng-click="verMateria(materia.id)"><i class="fa fa-eye"></i></button></a>
                                 </td>
                             </tr>
                         </tbody>

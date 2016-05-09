@@ -11,7 +11,7 @@
 			}
 		})
 		.state('app.viewProject', {
-			url: '/ver/:id',
+			url: '/proyecto/:id',
 			views: {
 				'contentView': {
 					templateUrl: 'modules/listado/views/detalle.html',
