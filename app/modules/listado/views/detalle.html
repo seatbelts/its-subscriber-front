@@ -39,7 +39,7 @@
                                 <div class="input-icon right">
                                     <div ng-repeat="materia in proyecto.materia" required="required">
                                         <label>
-                                            {{materia}}
+                                            {{materia.nombre}}
                                         </label>
                                     </div>
                                 </div>
@@ -48,7 +48,7 @@
                         <div class="form-group">
                             <label class="control-label col-md-3">Categoría</label>
                             <div class="col-md-9">
-                                <input class="form-control" ng-model="proyecto.categoria" readonly></input>
+                                <input class="form-control" ng-model="proyecto.categoria.nombre" readonly></input>
                             </div>
                         </div>
 

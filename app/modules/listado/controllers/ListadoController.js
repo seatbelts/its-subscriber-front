@@ -6,7 +6,6 @@ angular.module('its.listado')
 		getAllProjects = function() {
 			APIServices.getProjects()
 				.then(function(res) {
-					console.log(res);
 					if (res.status === 200) {
 						$scope.proyectos = res.data;
 						console.log($scope.proyectos);
@@ -15,7 +14,6 @@ angular.module('its.listado')
 		}
 
 		$scope.viewProject = function(id) {
-			console.log(id);
 			$state.go('app.viewProject', {id: id});
 		}
 		
