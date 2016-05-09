@@ -1,11 +1,17 @@
 angular.module('its.materias')
-	.controller('MateriasController', ['APIServices', function(APIServices){
+	.controller('MateriasController', ['$scope', '$rootScope', 'APIServices', function($scope, $rootScope, APIServices){
 		var matc = this;
 
 		matc.materias = [];
 
-		APIServices.getSubject().then(function(res){
-			matc.materias = res.data;
-			console.log(res.data)
-		})
-	}])
+		activate = function() {
+			APIServices.getSubject()
+				.then(function(res) {
+					console.log(res.data);
+
+					matc.materias = res.data;
+				})
+		};
+
+		activate();
+	}]);

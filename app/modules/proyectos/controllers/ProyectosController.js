@@ -1,6 +1,6 @@
 (function() {
 	var ProyectosController;
-	ProyectosController = function(APIServices) {
+	ProyectosController = function($scope, $state, APIServices) {
 
 		var pc = this;
 		pc.projects = [];
@@ -16,6 +16,11 @@
 		activate();
 
 		// TODO Agregar otra vista para ver la informacion del proyecto
+
+		$scope.ver = function(id) {
+			$rootScope.projectId = id;
+			$state.go('app.detalleproyecto', {id: id});
+		}
 
 		pc.proyecto = {};
 	    pc.proyecto.integrantes = [];

@@ -44,6 +44,7 @@
 			getStudents: getStudents,
 			getSubject: getSubject,
 			getTeachers: getTeachers,
+            getOneTeacher: getOneTeacher,
             getCategories: getCategories,
 			// Update
 			updateEvents: updateEvents,
@@ -187,6 +188,13 @@
 
         function getTeachers() {
             return $http.get(endpoints.maestros)
+                .then(response)
+                .catch(response);
+        }
+
+        function getOneTeacher(id) {
+            url = endpoints.maestros + '' + id + '/';
+            return $http.get(url)
                 .then(response)
                 .catch(response);
         }
