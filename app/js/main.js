@@ -110,8 +110,8 @@ MetronicApp.controller('AppController', ['$scope', '$rootScope', function($scope
 }]);
 
 
-MetronicApp.controller('DashboardController', ['$scope', 'APIServices', function($scope, APIServices) {
-    
+MetronicApp.controller('DashboardController', ['$scope', 'APIServices', '$localStorage',function($scope, APIServices, $localStorage) {
+    if (Object.keys($localStorage.user).length === 0) $state.go('login');
 }]);
 
 
