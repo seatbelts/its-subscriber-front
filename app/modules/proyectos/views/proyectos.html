@@ -46,6 +46,7 @@
                                 <thead>
                                     <tr class="text-center">
                                         <th> Nombre del proyecto </th>
+                                        <th> Ver </th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-center" ng-repeat="project in pc.projects">
@@ -53,7 +54,7 @@
                                         <td> {{project.nombre}} </td>
                                         <td>
                                             <a>
-                                                <button class="btn btn-info"><i class="fa fa-eye"></i></button>
+                                                <button class="btn btn-info" ng-click="ver(project.id)"><i class="fa fa-eye"></i></button>
                                             </a>
                                         </td>
                                     </tr>

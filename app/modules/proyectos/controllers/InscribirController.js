@@ -1,6 +1,6 @@
 angular.module('its.proyectos')
-    .controller('InscribirController', ['$state', 'APIServices', 'toaster', '$localStorage', 
-        function($state, APIServices, toaster, $localStorage) {
+    .controller('InscribirController', ['$state', '$scope', 'APIServices', 'toaster', '$localStorage', 
+        function($state, $scope, APIServices, toaster, $localStorage) {
 
         var ipc = this;
         // Arreglos con promises de los servicios
@@ -79,6 +79,12 @@ angular.module('its.proyectos')
         }
 
         activate();
+
+        $scope.selectUser = function(data) {
+            if (data) {
+                ipc.addStudent(data.originalObject);
+            }
+        }
 
         ipc.inscribir = function() {
 

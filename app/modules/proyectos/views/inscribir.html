@@ -80,6 +80,19 @@
                         <div class="form-group">
                             <label class="control-label col-md-3">Integrantes</label>
                             <div class="col-md-9">
+                                <angucomplete-alt id="usuario"
+                                          placeholder="Buscar integrantes por matricula"
+                                          pause="300"
+                                          selected-object="selectUser"
+                                          local-data="ipc.alumnos"
+                                          search-fields="matricula"
+                                          title-field="matricula"
+                                          minlength="1"
+                                          clear-selected="true"
+                                          input-class="form-control"/>
+                            </div>
+
+                            <div class="col-md-9">
                                 <select class="form-control" ng-options="student as student.fullName for student in ipc.alumnos" ng-model="ipc.integrante" 
                                     ng-change="ipc.addStudent(ipc.integrante)"></select>
                             </div>
