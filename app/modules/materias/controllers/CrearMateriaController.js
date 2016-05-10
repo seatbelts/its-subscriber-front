@@ -10,6 +10,9 @@ angular.module('its.materias')
 					console.log(res);
 					if (res.status === 201) {
 						toaster.pop('success', 'Se creo la materia con exito');
+						$state.go('app.materias');
+					} else {
+						toaster.pop('error', 'Error', 'Por favor verifique su informacion');
 					}
 				});
 		};

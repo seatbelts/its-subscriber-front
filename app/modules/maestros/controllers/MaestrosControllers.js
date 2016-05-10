@@ -23,7 +23,7 @@ angular.module('its.maestros')
 			$state.go('app.detallemaestro', {id: id});
 		}
 
-		maemv.crearMaestro = function() {
+		$scope.crearMaestro = function() {
 			console.log('test');
 			$state.go('app.crear');
 		};

@@ -74,7 +74,8 @@ angular.module('its.proyectos')
                     ipc.alumnos = res.data;
                     ipc.alumnos.forEach( function(element, index) {
                         element.fullName = element.nombre + ' ' + element.apellidos;
-                    }); 
+                    });
+                    console.log(ipc.alumnos);
                 });
         }
 
@@ -130,6 +131,8 @@ angular.module('its.proyectos')
                         })
 
                 	toaster.pop('success', 'Proyecto creado');
+
+                    $state.go('app.proyectos');
             	})
             	.catch(function (error) {
                 	toaster.pop('warning', 'Ha ocurrido un problema');

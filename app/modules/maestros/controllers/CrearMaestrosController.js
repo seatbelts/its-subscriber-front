@@ -1,5 +1,5 @@
 angular.module('its.maestros')
-	.controller('CrearMaestrosController', ['$scope', '$rootScope', 'toaster', 'APIServices', function($scope, $rootScope, toaster, APIServices){
+	.controller('CrearMaestrosController', ['$scope', '$rootScope', 'toaster', 'APIServices', '$state', function($scope, $rootScope, toaster, APIServices, $state){
 		$scope.maestro = {};
 		$scope.materias = {};
 
@@ -15,8 +15,11 @@ angular.module('its.maestros')
 			APIServices.createTeachers($scope.maestro)
 				.then(function(res) {
 					console.log(res);
-					if(res.status === 200) {
-						toaster.pop('success', 'Exito', 'Se creo al maestro')
+					if(res.status === 201) {
+						toaster.pop('success', 'Exito', 'Se creo al maestro');
+						$state.go('app.maestros');
+					} else {
+						toaster.pop('error', 'Error', 'Poo favor verifique la informacion');
 					}
 				})
 		};

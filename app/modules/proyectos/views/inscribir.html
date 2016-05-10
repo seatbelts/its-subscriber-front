@@ -85,8 +85,8 @@
                                           pause="300"
                                           selected-object="selectUser"
                                           local-data="ipc.alumnos"
-                                          search-fields="matricula"
-                                          title-field="matricula"
+                                          search-fields="fullName, matricula"
+                                          title-field="matricula, fullName"
                                           minlength="1"
                                           clear-selected="true"
                                           input-class="form-control"/>
@@ -139,10 +139,6 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <!-- TODO No se pueden agregar integrantes en esta parte sino estan inscritos -->
-                            <div class="col-md-4">
-                                <a data-target="#myModal_autocomplete" role="button" class="btn red" data-toggle="modal"> Integrantes </a>
-                            </div>
                         </div>
                     </div>
                     <div class="form-actions">
@@ -157,79 +153,6 @@
                     </div>
                 </form>
                 <!-- END FORM-->
-                <div id="myModal_autocomplete" class="modal fade" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                                <h4 class="modal-title">Integrantes</h4>
-                            </div>
-                            <div class="modal-body form">
-                                <form action="#" class="form-horizontal form-row-seperated">
-                                    <div class="form-group">
-                                        <label class="col-sm-4 control-label">Matrícula</label>
-                                        <div class="col-sm-8">
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    <i class="fa fa-key"></i>
-                                                </span>
-                                                <input type="text" id="typeahead_example_modal_1" name="typeahead_example_modal_1" class="form-control" ng-model="ipc.integrantes.matricula" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-4 control-label">Nombre</label>
-                                        <div class="col-sm-8">
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    <i class="fa fa-user"></i>
-                                                </span>
-                                                <input type="text" id="typeahead_example_modal_2" required="required" name="typeahead_example_modal_2" class="form-control" ng-model="ipc.integrantes.nombre" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-4 control-label">Apellidos</label>
-                                        <div class="col-sm-8">
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    <i class="fa fa-user"></i>
-                                                </span>
-                                                <input type="text" id="typeahead_example_modal_3" required="required" name="typeahead_example_modal_2" class="form-control" ng-model="ipc.integrantes.apellidos" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-4 control-label">E-mail</label>
-                                        <div class="col-sm-8">
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    <i class="fa fa-envelope"></i>
-                                                </span>
-                                                <input type="text" id="typeahead_example_modal_3" name="typeahead_example_modal_3" class="form-control" required="required" ng-model="ipc.integrantes.correo" /> </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group last">
-                                        <label class="col-sm-4 control-label">Teléfono</label>
-                                        <div class="col-sm-8">
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    <i class="fa fa-phone"></i>
-                                                </span>
-                                                <input type="text" id="typeahead_example_modal_4" required="required" name="typeahead_example_modal_4" class="form-control" ng-model="ipc.integrantes.telefono" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                <button ng-click="ipc.nuevoIntegrante()" type="button" class="btn btn-primary">
-                                    <i class="fa fa-check"></i> Guardar cambios</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
         <!-- END PORTLET-->
