@@ -35,6 +35,7 @@
     "select2": "^4.0.2",
     "jquery-backstretch": "backstretch#^2.0.4",
     "AngularJS-Toaster": "angularjs-toaster#^2.0.0",
-    "angucomplete-alt": "^2.4.1"
+    "angucomplete-alt": "^2.4.1",
+    "angular-file-upload": "^2.2.0"
   }
 }

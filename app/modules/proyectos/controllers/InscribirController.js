@@ -1,6 +1,8 @@
 angular.module('its.proyectos')
-    .controller('InscribirController', ['$state', '$scope', 'APIServices', 'toaster', '$localStorage', 
-        function($state, $scope, APIServices, toaster, $localStorage) {
+    .controller('InscribirController', ['$state', '$scope', 'APIServices', 'toaster', '$localStorage', 'FileUploader',
+        function($state, $scope, APIServices, toaster, $localStorage, FileUploader) {
+
+        $scope.uploader = new FileUploader();
 
         var ipc = this;
         // Arreglos con promises de los servicios
