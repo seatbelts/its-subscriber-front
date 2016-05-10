@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-xs-12">
+        <div class="portlet light">
+            <div class="portlet-title tabbable-line">
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a data-target="#tab_1_1" data-toggle="tab">{{materia.nombre}}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="portlet-body">
+                <div class="tab-content">
+                    <!-- PERSONAL INFO TAB -->
+                    <div class="tab-pane active" id="tab_1_1">
+                        <form role="form" novalidate>
+                            <div class="form-group">
+                                <label class="control-label">Nombre</label>
+                                <input type="text" ng-model="materia.nombre" class="form-control" disabled/> </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

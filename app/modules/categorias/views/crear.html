@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="col-xs-12">
+        <div class="portlet light">
+            <div class="portlet-title tabbable-line">
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a data-target="#tab_1_1" data-toggle="tab">Nueva Categoria</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="portlet-body">
+                <div class="tab-content">
+                    <!-- PERSONAL INFO TAB -->
+                    <div class="tab-pane active" id="tab_1_1">
+                        <form role="form" ng-submit="crear()" novalidate>
+                            <div class="form-group">
+                                <label class="control-label">Nombre</label>
+                                <input type="text" ng-model="categoria.nombre" placeholder="Hardware" class="form-control" /> </div>
+                            <div class="margiv-top-10">
+                                <button type="submit" class="btn green-haze"> Guardar Categoria </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
