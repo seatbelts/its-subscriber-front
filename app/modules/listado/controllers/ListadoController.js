@@ -8,7 +8,6 @@ angular.module('its.listado')
 				.then(function(res) {
 					if (res.status === 200) {
 						$scope.proyectos = res.data;
-						console.log($scope.proyectos);
 					}
 				});
 		}

@@ -4,7 +4,6 @@ angular.module('its.listado')
 		$scope.proyecto = {};
 
 		getDetalle = function() {
-			console.log($stateParams.id);
 			APIServices.getOneProject($stateParams.id)
 				.then(function(res) {
 					if (res.status === 200) {

@@ -18,7 +18,7 @@ angular.module('its.proyectos')
         ipc.project = {
             nombre: '',
             description: '', //Remove after
-            mesa: '1', //Remove after
+            mesa: '0', //Remove after
             // archivo: '',
             // evento: 1, //Default evento 1
             categoria: '',

@@ -291,4 +291,24 @@ MetronicApp.config(function ($httpProvider) {
     $httpProvider.interceptors.push('httpRequestInterceptor');
 });
 
+MetronicApp.filter('statusFilter', function () {
+    return function (input) {
+        if (input == 3) {
+            return 'Aceptado';
+        } else if (input == 2 ){
+            return 'Rechazado';
+        } else {
+            return 'Pendiente';
+        }
+    }
+});
+
+MetronicApp.filter('mesaFilter', function () {
+    return function (input) {
+        if (input == 0) {
+            return 'Sin mesa asignada';
+        }
+    }
+});
+
 var myApp = angular.module('its', ["MetronicApp"]);
