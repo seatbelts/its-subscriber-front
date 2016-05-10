@@ -31,7 +31,7 @@ angular.module('its.proyectos')
             nombre: '',
             usuario: APIServices.getUrl() + '/v1/usuarios/'+ $localStorage.user.id + '/',
             proyecto: '',
-            lider: APIServices.getUrl() + '/v1/alumnos/'+ $localStorage.user.id + '/',
+            lider: APIServices.getUrl() + '/v1/alumnos/'+ $localStorage.user.username + '/',
             integrantes: []
         };
 
