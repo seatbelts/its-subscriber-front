@@ -1,10 +1,31 @@
+<h3 class="page-title"> Crear categoría
+</h3>
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="#/app/dashboard">Incio</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a href="#/app/categorias">Lista de Categorías</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a>Crear Categoría</a>
+        </li>
+    </ul>
+    <div class="margiv-top-10 pull-right">
+        <a ng-click="crearCategoria()" class="btn green-haze"> Nueva Categoría </a>
+    </div>
+</div>
 <div class="row">
     <div class="col-xs-12">
         <div class="portlet light">
             <div class="portlet-title tabbable-line">
                 <ul class="nav nav-tabs">
                     <li class="active">
-                        <a data-target="#tab_1_1" data-toggle="tab">Nueva Categoria</a>
+                        <a data-target="#tab_1_1" data-toggle="tab">Nueva Categoría</a>
                     </li>
                 </ul>
             </div>
@@ -17,7 +38,7 @@
                                 <label class="control-label">Nombre</label>
                                 <input type="text" ng-model="categoria.nombre" placeholder="Hardware" class="form-control" /> </div>
                             <div class="margiv-top-10">
-                                <button type="submit" class="btn green-haze"> Guardar Categoria </button>
+                                <button type="submit" class="btn green-haze"> Guardar Categoría </button>
                             </div>
                         </form>
                     </div>
