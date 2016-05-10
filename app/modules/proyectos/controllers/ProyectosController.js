@@ -16,10 +16,9 @@
 		activate();
 
 		// TODO Agregar otra vista para ver la informacion del proyecto
-
+		
 		$scope.ver = function(id) {
-			$rootScope.projectId = id;
-			$state.go('app.detalleproyecto', {id: id});
+			$state.go('app.viewProject', {id: id});
 		}
 
 		pc.proyecto = {};

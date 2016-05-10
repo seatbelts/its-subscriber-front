@@ -1,4 +1,16 @@
-<h3 class="page-title"> Proyectos </h3>
+<h3 class="page-title"> Mis Proyectos </h3>
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="#/app/dashboard">Incio</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a href="#/app/proyectos"> Mis proyectos</a>
+        </li>
+    </ul>
+</div>
 <div class="row">
     <div class="col-md-12">
         <!-- BEGIN TODO SIDEBAR -->
@@ -9,20 +21,6 @@
                         <div class="caption" data-toggle="collapse" data-target=".todo-project-list-content">
                             <span class="caption-subject font-green bold uppercase">PROYECTOS </span>
                             <span class="caption-helper visible-sm-inline-block visible-xs-inline-block">click to view project list</span>
-                        </div>
-                        <div class="actions">
-                            <div class="btn-group">
-                                <a class="btn green btn-circle btn-sm todo-projects-config" href="#" data-toggle="dropdown" dropdown-menu-hover data-close-others="true">
-                                    <i class="icon-settings"></i> &nbsp;
-                                    <i class="fa fa-angle-down"></i>
-                                </a>
-                                <ul class="dropdown-menu pull-right">
-                                    <li>
-                                        <a href="#/app/proyectos/inscribir">
-                                            <i class="i"></i> Nuevo Proyecto </a>
-                                    </li>
-                                </ul>
-                            </div>
                         </div>
                     </div>
 <!--                     <div class="portlet-body todo-project-list-content">
@@ -46,6 +44,7 @@
                                 <thead>
                                     <tr class="text-center">
                                         <th> Nombre del proyecto </th>
+                                        <th> Ver </th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-center" ng-repeat="project in pc.projects">
@@ -53,7 +52,7 @@
                                         <td> {{project.nombre}} </td>
                                         <td>
                                             <a>
-                                                <button class="btn btn-info"><i class="fa fa-eye"></i></button>
+                                                <button class="btn btn-info" ng-click="ver(project.id)"><i class="fa fa-eye"></i></button>
                                             </a>
                                         </td>
                                     </tr>

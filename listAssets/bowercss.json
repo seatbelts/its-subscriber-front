@@ -3,5 +3,6 @@
 	"font/simple-line-icons/css/simple-line-icons.css",
 	"bower_components/bootstrap/dist/css/bootstrap.min.css",
 	"bower_components/jquery.uniform/themes/default/css/uniform.default.min.css",
-	"bower_components/AngularJS-Toaster/toaster.min.css"
+	"bower_components/AngularJS-Toaster/toaster.min.css",
+	"bower_components/angucomplete-alt/angucomplete-alt.css"
 ]

@@ -1,6 +1,6 @@
 angular.module('its.proyectos')
-    .controller('InscribirController', ['$state', 'APIServices', 'toaster', '$localStorage', 
-        function($state, APIServices, toaster, $localStorage) {
+    .controller('InscribirController', ['$state', '$scope', 'APIServices', 'toaster', '$localStorage', 
+        function($state, $scope, APIServices, toaster, $localStorage) {
 
         var ipc = this;
         // Arreglos con promises de los servicios
@@ -74,11 +74,18 @@ angular.module('its.proyectos')
                     ipc.alumnos = res.data;
                     ipc.alumnos.forEach( function(element, index) {
                         element.fullName = element.nombre + ' ' + element.apellidos;
-                    }); 
+                    });
+                    console.log(ipc.alumnos);
                 });
         }
 
         activate();
+
+        $scope.selectUser = function(data) {
+            if (data) {
+                ipc.addStudent(data.originalObject);
+            }
+        }
 
         ipc.inscribir = function() {
 
@@ -124,6 +131,8 @@ angular.module('its.proyectos')
                         })
 
                 	toaster.pop('success', 'Proyecto creado');
+
+                    $state.go('app.proyectos');
             	})
             	.catch(function (error) {
                 	toaster.pop('warning', 'Ha ocurrido un problema');
