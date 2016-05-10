@@ -57,10 +57,24 @@
                             <label class="control-label col-md-3">Categoría</label>
                             <div class="col-md-9">
                                 <input class="form-control" ng-model="proyecto.categoria.nombre" readonly></input>
-                                <label>{{proyecto.categoria.nombre}}</label>
                             </div>
                         </div>
-
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Mesa</label>
+                            <div class="col-md-9">
+                                <input class="form-control" ng-model="proyecto.mesa" readonly></input>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Estatus</label>
+                            <!-- TODO Agregar un filtro para el estatus -->
+<!--                             1 - Pendiente
+                            2 - Rechazado
+                            3 - Aceptado  -->
+                            <div class="col-md-9">
+                                <input class="form-control" ng-model="proyecto.estatus" readonly></input>
+                            </div>
+                        </div>
                     </div>
                 </form>
             </div>
