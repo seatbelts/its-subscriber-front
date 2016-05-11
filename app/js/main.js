@@ -271,8 +271,11 @@ MetronicApp.factory('httpRequestInterceptor', function($localStorage, $location,
             //     'Content-Type': 'application/json',
             //     'Accept': 'application/json'
             // };
-                if ($localStorage.user.token !== undefined) {
+
+                if (($localStorage.user.token) && ($localStorage.user.token !== undefined)) {
                     config.headers.Authorization = 'Token ' + $localStorage.user.token;
+                } else {
+                    $location.url('/login');
                 }
         }
 
