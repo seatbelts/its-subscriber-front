@@ -1,3 +1,3 @@
 (function() {
-	return angular.module('its.proyectos',["angucomplete-alt", "angularFileUpload", "toaster"]);
+	return angular.module('its.proyectos',["angucomplete-alt", "ngFileUpload", "toaster"]);
 })();

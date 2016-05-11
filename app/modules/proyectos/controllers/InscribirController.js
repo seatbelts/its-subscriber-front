@@ -1,8 +1,8 @@
 angular.module('its.proyectos')
-    .controller('InscribirController', ['$state', '$scope', 'APIServices', 'toaster', '$localStorage', 'FileUploader',
-        function($state, $scope, APIServices, toaster, $localStorage, FileUploader) {
+    .controller('InscribirController', ['$state', '$scope', 'APIServices', 'toaster', '$localStorage', 'Upload',
+        function($state, $scope, APIServices, toaster, $localStorage, Upload) {
 
-        $scope.uploader = new FileUploader();
+        $scope.archivo = {};
 
         var ipc = this;
         // Arreglos con promises de los servicios
@@ -84,10 +84,32 @@ angular.module('its.proyectos')
         activate();
 
         $scope.selectUser = function(data) {
+            console.log($scope.archivo);
             if (data) {
                 ipc.addStudent(data.originalObject);
             }
         }
+
+        $scope.upload = function (id, obj) {
+                Upload.upload({
+                    url: 'http://itsubscriber.herokuapp.com:80/v1/proyectos/' + id,
+                    data: {data: obj},
+                    method: 'PUT',
+                    headers: {'Content-Type': 'multipart/form-data'}
+                }).then(function (resp) {
+                    console.log(resp);
+                    console.log('success');
+                    //console.log('Success ' + resp.config.data.archivo.name + 'uploaded. Response: ' + resp.data);
+                }, function (resp) {
+                    console.log(resp);
+                    console.log('Error status: ' + resp.status);
+                }, function (evt) {
+                    console.log(evt);
+                    var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                    console.log('progress: ' + progressPercentage + '% ' + evt.config.data.archivo.name);
+                });
+            };
+
 
         ipc.inscribir = function() {
 
@@ -111,30 +133,49 @@ angular.module('its.proyectos')
 				data.materia.push(element.url);
 			});
 
+            console.log(data);
+
 
             APIServices.createProjects(data)
             	.then(function(res){
-                    var project = res.data;
-                    var data = {
-                        nombre: ipc.team.nombre,
-                        usuario: ipc.team.usuario,
-                        proyecto: res.data.url,
-                        lider: ipc.team.lider,
-                        integrantes: []
-                    };
+                    console.log(res);
+                    if (res.status === 201) {
+                        var project = res.data;
+                        var data = {
+                            nombre: ipc.team.nombre,
+                            usuario: ipc.team.usuario,
+                            proyecto: res.data.url,
+                            lider: ipc.team.lider,
+                            integrantes: []
+                        };
 
-                    ipc.project.integrantes.forEach( function(element, index) {
-                        data.integrantes.push(element.url);
-                    });
+                        /*project.archivo = $scope.archivo;
 
-                    APIServices.createTeams(data)
-                        .then(function(res){
-                            console.log('createTeams', res);
-                        })
+                        console.log(project);
 
-                	toaster.pop('success', 'Proyecto creado');
+                        $scope.upload(project.id, project);*/
 
-                    $state.go('app.proyectos');
+                        /*APIServices.updateProjects(project.id, project)
+                            .then(function(res) {
+                                console.log(res);
+                            });*/
+
+
+                        ipc.project.integrantes.forEach( function(element, index) {
+                            data.integrantes.push(element.url);
+                        });
+
+                        APIServices.createTeams(data)
+                            .then(function(res){
+                                console.log('createTeams', res);
+                            })
+
+                    	toaster.pop('success', 'Proyecto creado');
+
+                        $state.go('app.proyectos');
+                    } else {
+                        toaster.pop('error', 'No se pudo crear el proyecto');
+                    }
             	})
             	.catch(function (error) {
                 	toaster.pop('warning', 'Ha ocurrido un problema');

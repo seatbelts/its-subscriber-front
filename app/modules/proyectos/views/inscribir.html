@@ -108,7 +108,8 @@
                             <label class="control-label col-md-3">Archivo</label>
                             <div class="col-md-9">
                                 <div class="input-icon right">
-                                    <input type="file" nv-file-select uploader="uploader"></input>
+                                    <div class="btn btn-info" ngf-select ng-model="ipc.project.archivo" name="file">Select</div>
+                                    <div> {{ipc.project.archivo.name}}</div>
                                 </div>
                             </div>
                         </div>
