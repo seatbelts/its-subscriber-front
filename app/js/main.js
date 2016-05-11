@@ -183,7 +183,7 @@ MetronicApp.controller('FooterController', ['$scope', function($scope) {
 /* Setup Rounting For All Pages */
 MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
     // Redirect any unmatched url
-    $urlRouterProvider.otherwise("app/dashboard");  
+    $urlRouterProvider.otherwise("login");
     
     $stateProvider
 
@@ -259,7 +259,7 @@ MetronicApp.factory('httpRequestInterceptor', function($localStorage, $location,
         //     config.url = "#";
         // }
 
-        if (config.url.endsWith('login')) {
+        if (config.url.endsWith('login.html')) {
             config.headers = {
                 'Content-Type': 'application/x-www-form-urlencoded',
                 'Accept': 'application/x-www-form-urlencoded'
@@ -272,10 +272,8 @@ MetronicApp.factory('httpRequestInterceptor', function($localStorage, $location,
             //     'Accept': 'application/json'
             // };
 
-                if (($localStorage.user.token) && ($localStorage.user.token !== undefined)) {
+                if ($localStorage.user.token !== undefined) {
                     config.headers.Authorization = 'Token ' + $localStorage.user.token;
-                } else {
-                    $location.url('/login');
                 }
         }
 
