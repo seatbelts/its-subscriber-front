@@ -11,7 +11,6 @@ angular.module('its.maestros')
 		};
 
 		$scope.crear = function() {
-			console.log('paso')
 			APIServices.createTeachers($scope.maestro)
 				.then(function(res) {
 					console.log(res);

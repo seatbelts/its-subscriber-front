@@ -21,30 +21,24 @@ angular.module('its.auth')
 					switch(k) {
 						case 'username':
 							toaster.pop('error', 'Información Faltante', 'Ingresar Matrícula');
-							console.log(k);
 							return false;
 						case 'first_name':
 							toaster.pop('error', 'Información Faltante', 'Ingresar Nombre(s)');
-							console.log(k);
 							return false;
 						case 'last_name':
 							toaster.pop('error', 'Información Faltante', 'Ingresar Apellidos');
-							console.log(k);
 							return false;
 						case 'email':
 							toaster.pop('error', 'Información Faltante', 'Ingresar correo');
-							console.log(k);
 							return false;
 						case 'telefono':
 							toaster.pop('error', 'Información Faltante', 'Ingresar Teléfono');
 							return false;
 						case 'password':
 							toaster.pop('error', 'Información Faltante', 'Ingresar Contraseña');
-							console.log(k);
 							return false;
 						case 'passwordRepeat':
 							toaster.pop('error', 'Información Faltante', 'Repetir contraseña');
-							console.log(k);
 							return false;
 					}
 				} else if (l === s) {

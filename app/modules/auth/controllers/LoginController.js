@@ -20,11 +20,9 @@ angular.module('its.auth')
 					switch(k) {
 						case 'username':
 							toaster.pop('error', 'Falta poner la matricula');
-							console.log(k);
 							return false;
 						case 'password':
 							toaster.pop('error', 'Falta poner la contrasena');
-							console.log(k);
 							return false;
 					}
 				} else if (l === s) {

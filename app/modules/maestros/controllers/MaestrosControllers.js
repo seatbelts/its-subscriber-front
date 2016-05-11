@@ -24,7 +24,6 @@ angular.module('its.maestros')
 		}
 
 		$scope.crearMaestro = function() {
-			console.log('test');
 			$state.go('app.crear');
 		};
 
