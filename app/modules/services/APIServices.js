@@ -231,7 +231,8 @@
                 .catch(response);
         }
 
-        function updateProjects(url, obj) {
+        function updateProjects(id, obj) {
+            url = endpoints.proyectos + '' + id + '/';
             return $http.put(url, obj)
                 .then(response)
                 .catch(response);
