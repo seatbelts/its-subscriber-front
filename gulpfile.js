@@ -103,6 +103,7 @@ gulp.task('minify-own-sources', function() {
     ))
     .pipe(ngAnnotate())
     .pipe(concat('app.min.js'))
+    .pipe(uglify())
     .pipe(gulp.dest("build/assets/js/"))
     .pipe(connect.reload())
 });
