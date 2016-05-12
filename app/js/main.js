@@ -235,18 +235,6 @@ MetronicApp.run(["$rootScope", "$stateParams", "$templateCache","settings", "$st
     // $rootScope.baseUrl = 'http://localhost:8001'; 
 }]);
 
-// MetronicApp.run(function ($localStorage, $location) {
-//     if ($localStorage.user.token) {
-//       // Active session
-//       console.log('Active session');
-//       $location.path('/app/dashboard');
-//     } else {
-//       // Without session
-//       console.log('Without session');
-//       $localStorage.user = {};
-//       $location.path('/login');
-//     }
-//   });
 
 MetronicApp.factory('httpRequestInterceptor', function($localStorage, $location, $q) {
     return {

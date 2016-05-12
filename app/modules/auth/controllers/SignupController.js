@@ -44,7 +44,6 @@ angular.module('its.auth')
 				} else if (l === s) {
 					if (testObject.password != testObject.passwordRepeat) {
 						toaster.pop('error', 'Error de Validación', 'Las contraseñas no coinciden');
-						console.log('las contrasenas no coinciden');
 						return false;
 					}
           			return true;
@@ -55,14 +54,11 @@ angular.module('its.auth')
 
 		$scope.signup = function() {
 			$scope.validarObject = $scope.model;
-			console.log($scope.validarObject);
 			if (validarForm($scope.validarObject)) {
 				delete $scope.model.passwordRepeat;
-				console.log($scope.model);
 				// Hacer el post
 				APIServices.register($scope.model)
 					.then(function(res) {
-						console.log('APIServices', res);
 						if (res.status === 201) {
 							// Redirect to dashboard
 							$scope.model = {};
@@ -71,7 +67,6 @@ angular.module('its.auth')
 						} else {
 							$localStorage.user = {};
 							toaster.pop('error', 'Error', 'Error al crear usuario');
-							console.log('Unable to log');
 						}
 					})
 			}

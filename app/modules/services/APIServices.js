@@ -1,15 +1,5 @@
-(function() {
-    'use strict';
-
-    return angular
-        .module('API', [])
-        .factory('APIServices', APIServices);
-
-    APIServices.$inject = ['$http'];
-
-    function APIServices($http) {
-
-        // var url = 'http://localhost:8001';
+angular.module('API', [])
+    .factory('APIServices', ['$http', function($http) {
         var url = 'http://itsubscriber.herokuapp.com:80';
         var endpoints = {};
         endpoints = {
@@ -29,40 +19,40 @@
             login: login,
             register: register,
             // Create
-			createEvents: createEvents,
-			createProjects: createProjects,
-			createTeams: createTeams,
-			createStudents: createStudents,
-			createSubject: createSubject,
+            createEvents: createEvents,
+            createProjects: createProjects,
+            createTeams: createTeams,
+            createStudents: createStudents,
+            createSubject: createSubject,
             createTeachers: createTeachers,
-			createCategories: createCategories,
-			// Read
-			getEvents: getEvents,
-			getProjects: getProjects,
+            createCategories: createCategories,
+            // Read
+            getEvents: getEvents,
+            getProjects: getProjects,
             getOneProject: getOneProject,
-			getTeams: getTeams,
-			getStudents: getStudents,
-			getSubject: getSubject,
+            getTeams: getTeams,
+            getStudents: getStudents,
+            getSubject: getSubject,
             getOneSubject: getOneSubject,
-			getTeachers: getTeachers,
+            getTeachers: getTeachers,
             getOneTeacher: getOneTeacher,
             getCategories: getCategories,
             getOneCategory: getOneCategory,
-			// Update
-			updateEvents: updateEvents,
-			updateProjects: updateProjects,
-			updateTeams: updateTeams,
-			updateStudents: updateStudents,
-			updateSubject: updateSubject,
-			updateTeachers: updateTeachers,
+            // Update
+            updateEvents: updateEvents,
+            updateProjects: updateProjects,
+            updateTeams: updateTeams,
+            updateStudents: updateStudents,
+            updateSubject: updateSubject,
+            updateTeachers: updateTeachers,
             updateCategories: updateCategories,
-			// Delete
-			deleteEvents: deleteEvents,
-			deleteProjects: deleteProjects,
-			deleteTeams: deleteTeams,
-			deleteStudents: deleteStudents,
-			deleteSubject: deleteSubject,
-			deleteTeachers: deleteTeachers,
+            // Delete
+            deleteEvents: deleteEvents,
+            deleteProjects: deleteProjects,
+            deleteTeams: deleteTeams,
+            deleteStudents: deleteStudents,
+            deleteSubject: deleteSubject,
+            deleteTeachers: deleteTeachers,
             deleteCategories: deleteCategories,
             getUrl: getUrl
         };
@@ -164,7 +154,6 @@
 
         function getOneProject(id) {
             url = endpoints.proyectos + '' + id + '/';
-            console.log(url);
             return $http.get(url)
                 .then(response)
                 .catch(response);
@@ -317,7 +306,4 @@
         function getUrl () {
             return url;
         }
-
-    }
-
-})();
+    }]);

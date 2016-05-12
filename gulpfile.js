@@ -12,6 +12,7 @@ var gulp          = require('gulp'),
     template      = require('gulp-template'),
     lazypipe      = require('lazypipe'),
     uglify        = require('gulp-uglify');
+    minify        = require('gulp-minify');
 
 var bowercssFiles = require("./listAssets/bowercss.json");
 var bowerjsFiles = require("./listAssets/bowerjs.json");
@@ -64,6 +65,8 @@ gulp.task('copyfonts',function(){
       .pipe(gulp.dest('build/assets'));
 });
 
+
+
 gulp.task('minify-css', function () {
     return gulp.src(bowercssFiles)
         .pipe(concat('vendor.min.css'))
@@ -102,8 +105,8 @@ gulp.task('minify-own-sources', function() {
       gulpif(/[.]coffee$/, coffee({bare: true}).on('error', gutil.log)
     ))
     .pipe(ngAnnotate())
-    .pipe(concat('app.min.js'))
     .pipe(uglify())
+    .pipe(concat('app.min.js'))
     .pipe(gulp.dest("build/assets/js/"))
     .pipe(connect.reload())
 });

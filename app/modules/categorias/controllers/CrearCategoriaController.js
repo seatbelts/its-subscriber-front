@@ -4,10 +4,8 @@ angular.module('its.categorias')
 		$scope.categoria = {};
 
 		$scope.crear = function() {
-			console.log($scope.categoria);
 			APIServices.createCategories($scope.categoria)
 				.then(function(res) {
-					console.log(res);
 					if (res.status === 201) {
 						toaster.pop('success', 'Se creo la categoria con exito');
 						$state.go('app.categorias');

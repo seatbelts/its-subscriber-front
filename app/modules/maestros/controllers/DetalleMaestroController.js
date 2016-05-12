@@ -9,9 +9,7 @@ angular.module('its.maestros')
 			if (($rootScope.id == $stateParams.id) && $localStorage.user.role == 'admin') {
 				APIServices.getOneTeacher($rootScope.id)
 					.then(function(res) {
-						console.log(res.data);
 						$scope.maestro = res.data;
-						console.log($scope.maestro);
 					});
 			} else {
 				$state.go('app.dashboard');

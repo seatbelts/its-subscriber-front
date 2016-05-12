@@ -4,10 +4,8 @@ angular.module('its.materias')
 		$scope.materia = {};
 
 		activate = function() {
-			console.log($stateParams.id);
 			APIServices.getOneSubject($stateParams.id)
 				.then(function(res) {
-					console.log(res);
 					$scope.materia = res.data;
 				});
 		}

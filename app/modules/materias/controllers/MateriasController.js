@@ -15,7 +15,6 @@ angular.module('its.materias')
 		activate = function() {
 			APIServices.getSubject()
 				.then(function(res) {
-					console.log(res.data);
 
 					matc.materias = res.data;
 				})

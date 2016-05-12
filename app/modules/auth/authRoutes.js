@@ -1,7 +1,6 @@
-(function() {
-	var AuthRoutes;
-	AuthRoutes = function($stateProvider) {
-		return $stateProvider.state('login', {
+angular.module('its.auth')
+	.config(['$stateProvider', function($stateProvider) {
+		$stateProvider.state('login', {
 			url: '/login',
 			views: {
 				'mainView': {
@@ -19,6 +18,4 @@
 				}
 			}
 		});
-	};
-	return angular.module('its.auth').config(AuthRoutes);
-})();
+	}]);

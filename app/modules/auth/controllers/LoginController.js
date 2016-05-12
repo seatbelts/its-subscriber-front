@@ -1,5 +1,4 @@
 angular.module('its.auth')
-
 	.controller('LoginController', ['$scope', '$state', '$rootScope', 'APIServices', 'toaster', '$localStorage',
 		function($scope, $state, $rootScope, APIServices, toaster, $localStorage){
 		
@@ -37,7 +36,6 @@ angular.module('its.auth')
 			if (validarForm($scope.validarObject)){
 				APIServices.login($scope.model)
 					.then(function (res) {
-						console.log('APIServices', res);
 						if (res.status === 200) {
 							// Redirect to dashboard
 							console.log('Redirect to dashboard')

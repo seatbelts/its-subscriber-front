@@ -13,7 +13,6 @@ angular.module('its.maestros')
 		$scope.crear = function() {
 			APIServices.createTeachers($scope.maestro)
 				.then(function(res) {
-					console.log(res);
 					if(res.status === 201) {
 						toaster.pop('success', 'Exito', 'Se creo al maestro');
 						$state.go('app.maestros');

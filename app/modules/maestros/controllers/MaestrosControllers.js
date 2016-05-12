@@ -6,14 +6,12 @@ angular.module('its.maestros')
 		maemv.maestros = [];
 
 		APIServices.getTeachers().then(function(res){
-			console.log('res', res.data)
 			maemv.maestros = res.data;
 		})
 
 		activate = function() {
 			APIServices.getTeachers()
 				.then(function(res) {
-					console.log(res.data);
 					$scope.maestros = res.data;
 				});
 		}

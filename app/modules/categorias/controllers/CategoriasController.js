@@ -9,12 +9,10 @@ angular.module('its.categorias')
 		}
 
 		$scope.verCategoria = function(id) {
-			console.log(id);
 			$state.go('app.vercategoria', {id: id});
 		}
 
 		APIServices.getCategories().then(function(res){
-			console.log('res', res)
 			catmv.categorias = res.data;
 		})
 	}])

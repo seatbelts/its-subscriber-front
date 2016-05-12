@@ -77,14 +77,12 @@ angular.module('its.proyectos')
                     ipc.alumnos.forEach( function(element, index) {
                         element.fullName = element.nombre + ' ' + element.apellidos;
                     });
-                    console.log(ipc.alumnos);
                 });
         }
 
         activate();
 
         $scope.selectUser = function(data) {
-            console.log($scope.archivo);
             if (data) {
                 ipc.addStudent(data.originalObject);
             }
@@ -97,14 +95,11 @@ angular.module('its.proyectos')
                     method: 'PUT',
                     headers: {'Content-Type': 'multipart/form-data'}
                 }).then(function (resp) {
-                    console.log(resp);
                     console.log('success');
                     //console.log('Success ' + resp.config.data.archivo.name + 'uploaded. Response: ' + resp.data);
                 }, function (resp) {
-                    console.log(resp);
                     console.log('Error status: ' + resp.status);
                 }, function (evt) {
-                    console.log(evt);
                     var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
                     console.log('progress: ' + progressPercentage + '% ' + evt.config.data.archivo.name);
                 });
@@ -133,12 +128,10 @@ angular.module('its.proyectos')
 				data.materia.push(element.url);
 			});
 
-            console.log(data);
 
 
             APIServices.createProjects(data)
             	.then(function(res){
-                    console.log(res);
                     if (res.status === 201) {
                         var project = res.data;
                         var data = {
@@ -167,7 +160,6 @@ angular.module('its.proyectos')
 
                         APIServices.createTeams(data)
                             .then(function(res){
-                                console.log('createTeams', res);
                             })
 
                     	toaster.pop('success', 'Proyecto creado');

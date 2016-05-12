@@ -4,10 +4,8 @@ angular.module('its.categorias')
 		$scope.categoria = {};
 
 		activate = function() {
-			console.log($stateParams.id);
 			APIServices.getOneCategory($stateParams.id)
 				.then(function(res) {
-					console.log(res);
 					$scope.categoria = res.data;
 				});
 		}
