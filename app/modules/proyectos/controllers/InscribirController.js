@@ -90,7 +90,7 @@ angular.module('its.proyectos')
 
         $scope.upload = function (id, obj) {
                 Upload.upload({
-                    url: 'http://itsubscriber.herokuapp.com:80/v1/proyectos/' + id,
+                    url: 'http://itsubscriber-dev.herokuapp.com:80/v1/proyectos/' + id,
                     data: {data: obj},
                     method: 'PUT',
                     headers: {'Content-Type': 'multipart/form-data'}

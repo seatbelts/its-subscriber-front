@@ -1,6 +1,6 @@
 angular.module('API', [])
     .factory('APIServices', ['$http', function($http) {
-        var url = 'http://itsubscriber.herokuapp.com:80';
+        var url = 'http://itsubscriber-dev.herokuapp.com:80';
         var endpoints = {};
         endpoints = {
             login: url + '/login/',
