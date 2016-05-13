@@ -37,6 +37,7 @@
                                 <th> Ver </th>
                                 <th> Aprobar/Rechazar </th>
                                 <th> Estatus </th>
+                                <th> Mesa </th>
                             </tr>
                         </thead>
                         <tbody class="text-center" ng-repeat="proyecto in proyectos | orderBy: '+id'">
@@ -52,6 +53,7 @@
                                     <a><button ng-click="rechazar(proyecto.id, proyecto)" class="btn btn-danger"><i class="fa fa-times"></i></button></a>
                                 </td>
                                 <td> {{proyecto.estatus | statusFilter}}</td>
+                                <td>{{proyecto.mesa}}</td>
                             </tr>
                         </tbody>
                     </table>    

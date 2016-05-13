@@ -3,6 +3,7 @@ angular.module('its.proyectos')
         function($state, $scope, APIServices, toaster, $localStorage, Upload) {
 
         $scope.archivo = {};
+        console.log($localStorage);
 
         var ipc = this;
         // Arreglos con promises de los servicios
@@ -132,6 +133,7 @@ angular.module('its.proyectos')
 
             APIServices.createProjects(data)
             	.then(function(res){
+                    console.log(res)
                     if (res.status === 201) {
                         var project = res.data;
                         var data = {

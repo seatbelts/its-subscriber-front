@@ -32,7 +32,7 @@
             </div>
             <div class="portlet-body form">
                 <!-- BEGIN FORM-->
-                <form id="form-username" class="form-horizontal form-bordered" ng-submit="ipc.inscribir()" novalidate="">
+                <form id="form-username" class="form-horizontal form-bordered" ng-submit="guardar()" novalidate="">
                     <div class="form-body">
                         <div class="form-group">
                             <label class="control-label col-md-3">Nombre del proyecto</label>
@@ -62,7 +62,7 @@
                         <div class="form-group">
                             <label class="control-label col-md-3">Mesa</label>
                             <div class="col-md-9">
-                                <input class="form-control" value="{{proyecto.mesa | mesaFilter}}" readonly></div></input>
+                                <input class="form-control" value="{{proyecto.mesa | mesaFilter}}" ng-model="proyecto.mesa" ng-disabled="!isAdmin"></div></input>
                             </div>
                         </div>
                         <div class="form-group">
@@ -71,6 +71,14 @@
                                 <input class="form-control" value="{{proyecto.estatus | statusFilter}}" readonly></div></input>
                             </div>
                         </div>
+                        <div class="form-actions">
+                        <div class="row" ng-show="isAdmin">
+                            <div class="col-md-offset-3 col-md-9">
+                                <button type="submit" ng-click="guardar()" class="btn green">
+                                    <i class="fa fa-check"></i> Guardar</button>
+                            </div>
+                        </div>
+                    </div>
                     </div>
                 </form>
             </div>
