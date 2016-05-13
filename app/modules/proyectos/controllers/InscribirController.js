@@ -3,7 +3,6 @@ angular.module('its.proyectos')
         function($state, $scope, APIServices, toaster, $localStorage, Upload) {
 
         $scope.archivo = {};
-        console.log($localStorage);
 
         var ipc = this;
         // Arreglos con promises de los servicios
@@ -119,7 +118,7 @@ angular.module('its.proyectos')
 				nombre: ipc.project.nombre,
 				description: ipc.project.description,
 				categoria: ipc.project.categoria.url,
-				evento: APIServices.getUrl() + '/v1/eventos/1/',
+				evento: 'http://itsubscriber-dev.herokuapp.com:80/v1/eventos/1/',
 				mesa: ipc.project.mesa,
 				// Check this service
 				archivo: ipc.project.archivo,
@@ -133,7 +132,6 @@ angular.module('its.proyectos')
 
             APIServices.createProjects(data)
             	.then(function(res){
-                    console.log(res)
                     if (res.status === 201) {
                         var project = res.data;
                         var data = {

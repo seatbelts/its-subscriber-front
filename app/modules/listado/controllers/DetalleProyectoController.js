@@ -17,11 +17,9 @@ angular.module('its.listado')
 			if ($localStorage.user.role === "admin") {
 				$scope.isAdmin = true;
 			}
-			console.log($scope.isAdmin);
 		}
 
 		$scope.guardar = function() {
-			console.log($scope.proyecto);
 			var materiaUrl = [];
 			var categoriaUrl = '';
 			$scope.proyecto.materia.forEach(function(element, index) {
@@ -30,14 +28,12 @@ angular.module('its.listado')
 			categoriaUrl = $scope.proyecto.categoria.url;
 			$scope.proyecto.materia = materiaUrl;
 			$scope.proyecto.categoria = categoriaUrl;
-			console.log($scope.proyecto);
 			APIServices.updateProjects($scope.proyecto.id, $scope.proyecto)
 				.then(function(res) {
 					if (res.status === 200) {
 						toaster.pop('success', 'Exito', 'Se actualizo el equipo con exito');
 						$state.go('app.listado')
 					}
-					console.log(res);
 				});
 		};
 
